@@ -1,0 +1,25 @@
+{
+ContactType : "group / individual",
+GroupName : "",
+FirstName : "",
+LastName : "",
+Address(n) : {
+	Street1 : "",
+	Street2 : "",
+	City : "",
+	State : '',
+	Zip : ""
+	},
+AddressLabel(n) : "",
+Phone(n) : "",
+PhoneLabel(n) : "",
+Email(n) : "",
+EmailLabel(n): "",
+Facebook : "",
+Twitter : "",
+BDay : "",
+GroupMembers : [],
+GroupMembership : [],
+Association : "",
+Notes : ""
+}
