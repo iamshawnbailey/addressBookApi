@@ -1,0 +1,116 @@
+URLs:
+GET : http://host:port/api/vx/addressbook/:id
+GET : http://host:port/api/vx/addressbook/:id/contacts
+GET : http://host:port/api/vx/addressbook/:id/contact/:id
+GET : http://host:port/api/vx/addressbook/:id/groups
+GET : http://host:port/api/vx/addressbook/:id/groups/:id
+GET : http://host:port/api/vx/addressbook/:id/contacts/:id/phonenumbers
+GET : http://host:port/api/vx/addressbook/:id/contacts/:id/addresses
+GET : http://host:port/api/vx/addressbook/:id/contacts/:id/bday
+GET : http://host:port/api/vx/addressbook/:id/contacts/:id/emails
+GET : http://host:port/api/vx/addressbook/:id/contacts/:id/firstname
+GET : http://host:port/api/vx/addressbook/:id/contacts/:id/lastname
+GET : http://host:port/api/vx/addressbook/:id/contacts/:id/facebook
+
+POST : http://host:port/api/vx/addressbook
+POST : http://host:port/api/vx/addressbook/:id/contacts
+POST : http://host:port/api/vx/addressbook/:id/groups
+
+PUT : http://host:port/api/vx/addressbook/:id/contacts/:id
+PUT : http://host:port/api/vx/addressbook/:id/groups/:id
+
+PATCH : http://host:port/api/vx/addressbook/:id/contacts/:id/phonenumbers
+PATCH : http://host:port/api/vx/addressbook/:id/contacts/:id/addresses
+PATCH : http://host:port/api/vx/addressbook/:id/contacts/:id/bday
+PATCH : http://host:port/api/vx/addressbook/:id/contacts/:id/emails
+PATCH : http://host:port/api/vx/addressbook/:id/contacts/:id/firstname
+PATCH : http://host:port/api/vx/addressbook/:id/contacts/:id/lastname
+PATCH : http://host:port/api/vx/addressbook/:id/contacts/:id/facebook
+PATCH : http://host:port/api/vx/addressbook/:id/contacts/:id/
+
+DELETE : http://host:port/api/vx/addressbook/:id/contacts/:id
+DELETE : http://host:port/api/vx/addressbook/:id/groups/:id
+
+Query Parameters:
+<filter>=value1,value2,...
+sort=(-)<field>
+q=string
+range=<n>
+fields=field1,field2,...
+
+Example:  http://host:port/api/vx/addressbook/:id/contacts?firstname=shawn&sort=-lastname&fields=lastname,firstname
+http://host:port/api/vx/addressbook/:id/contacts/:id?fields=groups&sort=groups
+
+Abbreviated Queries:
+http://host:port/api/vx/addressbook/monthsbdays
+http://host:port/api/vx/addressbook/todaysbdays
+http://host:port/api/vx/addressbook/mycontacts
+http://host/port/api/vx/addressbook/mygroups
+
+
+
+
+
+Create a new AddressBook:  
+POST : http://host:port/api/v1/addressbook
+
+	Return:
+	URL for the Address Book:  http://host:port/api/v1/addressbook/:id
+
+
+
+Get an Address Book:
+	GET : http://host:port/api/vx/addressbook/:id
+
+	Return:
+	List of contacts and the URL for each:  http://host:port/api/vx/addressbook/:id/contacts/:id
+
+	Format:
+	{"contact1" : "url", "Contact2" : "url", ...}
+	
+	
+	
+Get a Contact:
+	GET : http://host:port/api/vx/addressbook/:id/contacts/:id
+	
+	Return:
+	Contact details and URLs for the Contact and any Groups they are associated with
+	Contact URL:  http://host:port/api/vx/addressbook/:id/contacts/:id
+	Group URL:  http://host:port/api/vx/addressbook/:id/groups/:id
+	Format:
+	{
+		ContactType : "group / individual",
+		GroupName : "",
+		FirstName : "",
+		LastName : "",
+		Address(n) : {
+			Street1 : "",
+			Street2 : "",
+			City : "",
+			State : '',
+			Zip : ""
+			},
+		AddressLabel(n) : "",
+		Phone(n) : "",
+		PhoneLabel(n) : "",
+		Email(n) : "",
+		EmailLabel(n): "",
+		Facebook : "",
+		Twitter : "",
+		BDay : "",
+		GroupMembers : [],
+		GroupMembership : {"group1" : "url", "group2" : "url", ...},
+		Association : "",
+		Notes : ""
+		url : ""
+		}
+		
+		
+Get Groups:
+	GET : http://host:port/api/vx/addressbook/:id/groups
+	
+	Return:
+	List of Groups and the URL for each
+	
+	Format:
+	{"group1" : "url", "group1", "url", ...}
