@@ -12,22 +12,33 @@ var dbname = 'addressbook';
 //  Take any request that includes '/get' in the path, take the second entry in the path and populate the 'collection' variable with the value
 //  The 'collection' variable is used by mongoConnection to set the DB instance we connect to
 router.get('/*', function(req, res, next) {
-	console.log('****** restGet Debug: ' + collection);
+	console.log('****** addressBookOperations Debug: ' + collection);
 	var result = mongoConnection.mongoOperation('query', json, dbname, collection)
 	res.render('index', result);
 });
 
 
 router.post('/*', function(req, res, next) {
-	parsedURL = url.parse(req.url);
-	qString = searchstring.getSearchString(parsedURL);
-	json = searchstring.getQueryStringValues(qString);
-	console.log('POST Path: ' + req.path);
 	var pathArray = req.path.toString().split('/');
-	var collection = pathArray[1];
-	console.log('****** restPost Debug: ' + collection);
-	mongoConnection.mongoOperation('insert', json, dbname, collection);
-	res.render('index', { title: json });
+	parsedURL = url.parse(req.url);
+	var qString = searchstring.getSearchString(parsedURL);
+
+	if((pathArray.length == 2)&(qString == '')){
+		var collection = pathArray[1];
+		console.log('****** addressBookOperations Debug: ' + collection);
+		json = '{"url" : "http://127.0.0.1:80/api/v1/addressbook/' + collection + '"}'
+		mongoConnection.mongoOperation('insert', json, dbname, collection, function(err, response) {
+
+			if(!err) {
+				console.log("response: " + response)
+				res.writeHead(201, {
+					'Content-Length': response.length,
+					'Content-Type': 'text/plain' });
+				res.write(JSON.stringify(response));
+				res.end();
+			}
+		})
+	}
 });
 
 
