@@ -3,11 +3,13 @@ var router = express.Router();
 var assert = require('assert');
 var url = require('url');
 var searchstring = require('../bin/SearchString');
+var config = require('../bin/ParseConfig')
 var querystring = require('querystring');
 var mongoConnection = require('../bin/MongoConnection');
 
 var json;
 var dbname = 'addressbook';
+var baseURL
 
 //  Take any request that includes '/get' in the path, take the second entry in the path and populate the 'collection' variable with the value
 //  The 'collection' variable is used by mongoConnection to set the DB instance we connect to
@@ -19,6 +21,7 @@ router.get('/*', function(req, res, next) {
 
 
 router.post('/*', function(req, res, next) {
+	baseURL = 'http://' + config.getListenAddress() + ':' + config.getListenPort() + '/api/' + config.getVersion() + '/addressbook/'
 	var pathArray = req.path.toString().split('/');
 	parsedURL = url.parse(req.url);
 	var qString = searchstring.getSearchString(parsedURL);
@@ -26,7 +29,7 @@ router.post('/*', function(req, res, next) {
 	if((pathArray.length == 2)&(qString == '')){
 		var collection = pathArray[1];
 		console.log('****** addressBookOperations Debug: ' + collection);
-		json = '{"url" : "http://127.0.0.1:80/api/v1/addressbook/' + collection + '"}'
+		json = '{"url" : "' + baseURL + collection + '" }'
 		mongoConnection.mongoOperation('insert', json, dbname, collection, function(err, response) {
 
 			if(!err) {

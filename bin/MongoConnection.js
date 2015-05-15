@@ -1,25 +1,14 @@
 #!/usr/bin/env node
 
-var fs = require('fs')
 var assert = require('assert');
+var config = require('./ParseConfig')
 var MongoClient = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
 var mongoURL
 
-//  Load the MongoDB connection values from the config.json file
-fs.readFile('config.json', function(err, data){
-	console.log('config.json data: ' + data)
-	var configJSON = JSON.parse(data)
-	mongoURL = 'mongodb://' + configJSON.mongohost + ':' + configJSON.mongoport + '/'
-	console.log('mongo URL: ' + mongoURL)
-	if(err){
-		console.log('Error reading config.json from MongoConnection: ' + err)
-	}
-
-})
-
 
 exports.mongoOperation = function(operation, json, dbname, collection, callback){
+	mongoURL = 'mongodb://' + config.getMongoHost() + ':' + config.getMongoPort() + '/'
 	if(operation == 'insert'){
 		MongoClient.connect(mongoURL + dbname, function(err, db){
 			console.log('Connected to MongoDB with URL: ' + mongoURL + collection);
