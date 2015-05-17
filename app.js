@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 //var users = require('./routes/users');
-var addressBookOperations = require('./routes/addressBookOperations');
+var addressBookOperations = require('./routes/AddressBookOperations');
 //var restPost = require('./routes/restPost');
 
 var app = express();
