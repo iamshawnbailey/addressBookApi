@@ -4,11 +4,13 @@ var assert = require('assert');
 var url = require('url');
 var searchstring = require('../bin/SearchString');
 var config = require('../bin/ParseConfig')
+var buildJsonStringModule = require('../bin/BuildJsonString')
 var querystring = require('querystring');
 var mongoConnection = require('../bin/MongoConnection');
 
-var jsonString;
-var dbname = 'addressbook';
+var jsonString
+var jsonQueryString
+var dbname = 'addressbook'
 var baseURL
 var resourceType
 
@@ -34,19 +36,22 @@ router.post('/*', function(req, res, next) {
 
 		jsonString = '{"name" : "' + collection + '","url" : "' + baseURL + collection + '" }'
 		console.log('AddressBookOperations.post() value of jsonString passed to mongoConnection.mongoOperation(): ' + jsonString);
-		mongoConnection.mongoOperation(resourceType, 'insert', jsonString, dbname, collection, function(err, response) {
+		mongoConnection.mongoOperation(resourceType, 'insert', jsonString, jsonQueryString, dbname, collection, function(err, response) {
 
 			if(!err) {
 				console.log("AddressBookOperations.post() response: " + response)
-				res.writeHead(201, {
-					'Content-Length': response.length,
-					'Content-Type': 'application/json' });
-				res.write(JSON.stringify(response));
-				res.end();
+				res.status(201).json(JSON.parse(response))
+			}else{
+				console.log("AddressBookOperations.post() error response: " + err.toString())
+				res.status(500).json(err)
+
 			}
 		})
 	}
 });
+
+
+
 
 
 router.put('/*', function(req, res, next){
