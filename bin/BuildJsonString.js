@@ -6,7 +6,7 @@ var config = require('./ParseConfig')
 
 var baseURL
 
-exports.buildJsonString = function(resourceType, operation, jsonQueryString, callback){
+exports.buildJsonString = function(resourceType, operation, jsonQueryString, collection, callback){
 
     if(baseURL == ''){
         baseURL = setBaseURL()

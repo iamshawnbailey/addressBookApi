@@ -38,21 +38,13 @@ exports.mongoOperation = function(resourceTypeArg, operation, jsonStringArg, jso
 			if (err) {
 				console.log('MongoConnection.mongoOperation() DB Connection Error: ' + err.toString())
 			}else{
-
-				//  Load up the existing addressbooks from the addressbooks collection
-				loadAddressBooks(dbConnection, function(err, addressBooks){
-					console.log('MongoConnection.mongoOperation() receive addressBooks array with contents: ' + addressBooks.toString())
-
-					console.log('MongoConnection.mongoOperation()New DB Connection, calling selectOperation with operation: ' + operation)
-
-					selectOperation(resourceType, operation, jsonString, dbname, collection, function (err, jsonObjectsArray) {
-						if (!err) {
-							callback(err, jsonObjectsArray)
-						}else{
-							console.log('MongoConnection.mongoOperation() Error with selectOperation: ' + err.toString())
-							callback(err, err)
-						}
-					})
+				selectOperation(resourceType, operation, jsonString, dbname, collection, function (err, jsonObjectsArray) {
+					if (!err) {
+						callback(err, jsonObjectsArray)
+					}else{
+						console.log('MongoConnection.mongoOperation() Error with selectOperation: ' + err.toString())
+						callback(err, err)
+					}
 				})
 			}
 		})
@@ -94,14 +86,10 @@ function selectOperation(reourceType, operation, jsonString, dbname, collection,
 
 	}else if(operation == 'query'){
 
-		buildJsonStringModule.buildJsonString(resourceType, operation, jsonQueryString, function(err, jsonString){
-			console.log('Connected to MongoDB with URL: ' + mongoURL + collection);
-			mongoQuery(dbConnection, jsonString, collection, function(err, jsonObjectsArray){
-				//db.close();
-				callback(err, jsonObjectsArray)
-			})
+		console.log('MongoConnection.selectOperation() Connected to MongoDB with URL: ' + mongoURL + collection);
+		mongoQuery(dbConnection, jsonString, collection, function(err, jsonObjectsArray){
+			callback(err, jsonObjectsArray)
 		})
-
 	}
 }
 
@@ -186,12 +174,16 @@ function mongoInsert(dbConnection, jsonString, collection, callback){
 
 //  Handles all query operations to the DB
 function mongoQuery(dbConnection, jsonString, collection, callback){
+	var returnString = ''
 	console.log('MongoConnection.mongoQuery() Connected to Mongo to query collection: ' + collection);
 	var cursor = dbConnection.collection(collection).find(JSON.parse(jsonString))
 	cursor.toArray(function(err, jsonObjectsArray){
-		callback(err, jsonObjectsArray)
+		for(i=0;i<jsonObjectsArray.length;i++){
+			returnString = returnString + JSON.stringify(jsonObjectsArray[i])
+		}
+		console.log('MongoConnection.mongoQuery() return string: ' + returnString)
+		callback(err, returnString)
 	})
-
 }
 
 
