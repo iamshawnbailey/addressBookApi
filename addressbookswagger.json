@@ -1,0 +1,410 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Swagger AddressBook"
+    },
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/addressbooks": {
+            "post": {
+                "description": "Create a new addressbook\n",
+                "operationId": "addaddressbook",
+                "consumes": [
+                    "application / json"
+                ],
+                "produces": [
+                    "application / json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "addressbook object to add",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AddressBook"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Successful creation",
+                        "schema": {
+                            "$ref": "#/definitions/AddressBook"
+                        }
+                    },
+                    "405": {
+                        "description": "Invalid Input"
+                    },
+                    "500": {
+                        "description": "Already Exists",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/addressbooks/{name}": {
+            "get": {
+                "description": "Gets `AddressBook` object by name.\n",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "name",
+                        "description": "name of the addressbook",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "$ref": "#/definitions/AddressBook"
+                        }
+                    }
+                }
+            }
+        },
+        "/addressbooks/{name}/contacts": {
+            "get": {
+                "description": "Get the contacts from an addressbook\n",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "name",
+                        "description": "Name of the addressbook",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "in": "query",
+                        "name": "filter",
+                        "description": "Filter the results by contact name",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "sort",
+                        "description": "Sort order of the groups by field (+ / -)",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "q",
+                        "description": "Free test query string for search",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields to be returned",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Contact"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/addressbooks/{name}/groups": {
+            "get": {
+                "description": "Get the list of groups for this addressbook\n",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "name",
+                        "description": "Name of the addressbook",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "in": "query",
+                        "name": "filter",
+                        "description": "Filter the results by group name",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "sort",
+                        "description": "Sort order of the groups by field (+ / -)",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "q",
+                        "description": "Free test query string for search",
+                        "type": "string",
+                        "required": false
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields to be returned",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "required": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/Group"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/addressbooks/{name}/contacts/{contact}": {
+            "get": {
+                "description": "Get the information for a contact\n",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "name",
+                        "description": "The name of the addressbook",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "in": "path",
+                        "name": "contact",
+                        "description": "The id of the contact",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "$ref": "#/definitions/Contact"
+                        }
+                    }
+                }
+            }
+        },
+        "/addressbooks/{name}/groups/{group}": {
+            "get": {
+                "description": "Get the details of a particular group in the addressbook\n",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "name",
+                        "description": "The name of the addressbook",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "in": "path",
+                        "name": "group",
+                        "description": "The name of the group",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "$ref": "#/definitions/Group"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "AddressBook": {
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                }
+            }
+        },
+        "Group": {
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "members": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "Contact": {
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                },
+                "contacttype": {
+                    "type": "string"
+                },
+                "groupname": {
+                    "type": "string"
+                },
+                "firstname": {
+                    "type": "string"
+                },
+                "lastname": {
+                    "type": "string"
+                },
+                "addresses": {
+                    "$ref": "#/definitions/Address"
+                },
+                "phones": {
+                    "$ref": "#/definitions/Phone"
+                },
+                "emails": {
+                    "$ref": "#/definitions/Email"
+                },
+                "bday": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "groupmembership": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "facebook": {
+                    "type": "string"
+                },
+                "twitter": {
+                    "type": "string"
+                },
+                "association": {
+                    "type": "string"
+                },
+                "notes": {
+                    "type": "string"
+                }
+            }
+        },
+        "Address": {
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                },
+                "label": {
+                    "type": "string"
+                },
+                "street1": {
+                    "type": "string"
+                },
+                "street2": {
+                    "type": "string"
+                },
+                "city": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "string"
+                },
+                "zip": {
+                    "type": "integer"
+                }
+            }
+        },
+        "Phone": {
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                },
+                "label": {
+                    "type": "string"
+                },
+                "number": {
+                    "type": "string"
+                }
+            }
+        },
+        "Email": {
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "url": {
+                    "type": "string"
+                },
+                "label": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                }
+            }
+        },
+        "ErrorResponse": {
+            "properties": {
+                "errorcode": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "correctiveaction": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
