@@ -8,6 +8,7 @@ var listenPort
 var mongoHost
 var mongoPort
 var version
+var debug
 
 //  Load the MongoDB connection values from the config.json file
 fs.readFile('config.json', function(err, data){
@@ -18,12 +19,17 @@ fs.readFile('config.json', function(err, data){
     mongoHost = configJSON.mongohost
     mongoPort = configJSON.mongoport
     version = configJSON.version
+    debug = configJSON.debug
 
     if(err){
         console.log('Error reading config.json from MongoConnection: ' + err)
     }
 
 })
+
+exports.getBaseUrl = function(){
+    return 'http://' + listenAddress + ':' + listenPort + '/api/' + version + '/addressbooks/'
+}
 
 exports.getListenAddress = function(){
     console.log('getListenAddress; ' + listenAddress)
@@ -44,4 +50,8 @@ exports.getMongoPort = function(){
 
 exports.getVersion = function(){
     return version
+}
+
+exports.getDebug = function(){
+    return debug
 }

@@ -1,4 +1,8 @@
 #!/usr/bin/env node
+//  Used for MongoDB operations.
+//  The DB Name is 'addressbook'
+//  The addressbook records are in the 'addressbooks' collection
+//  The contact and group records for an addressbook are in collections named after the particular addressbook
 //  TODO:  Insertion and Query of Contact records
 
 var assert = require('assert');

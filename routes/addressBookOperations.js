@@ -11,17 +11,18 @@ var mongoConnection = require('../bin/MongoConnection');
 var jsonString
 var jsonQueryString
 var dbname = 'addressbook'
-var baseURL
+var baseURL = ''
 var resourceType
 var collection
 var location
 var links
 
+
 //  Run any GET requests and take the second entry in the path and populate the 'collection' variable with the value
 //  The 'collection' variable is used by mongoConnection to set the DB instance we connect to
 router.get('/*', function(req, res, next) {
 	console.log('AddressBookOperations.get value of collection: ' + collection);
-	baseURL = 'http://' + config.getListenAddress() + ':' + config.getListenPort() + '/api/' + config.getVersion() + '/addressbook/'
+	setBaseUrl()
 	parsedURL = url.parse(req.url);
 	var pathArray = req.path.toString().split('/')
 	if(pathArray.length == 2){
@@ -50,12 +51,13 @@ router.get('/*', function(req, res, next) {
 
 //  Run any POST requests and build the HTTP response
 router.post('/*', function(req, res, next) {
-	baseURL = 'http://' + config.getListenAddress() + ':' + config.getListenPort() + '/api/' + config.getVersion() + '/addressbook/'
+	console.log('AddressBookOperations.post() running')
+	setBaseUrl()
 	var pathArray = req.path.toString().split('/');
 	parsedURL = url.parse(req.url);
 	var qString = searchstring.getSearchString(parsedURL);
 
-	if((pathArray.length == 2)&(qString == '')){
+	if((pathArray.length == 2)){
 		resourceType = 'addressbook'
 		collection = pathArray[1];
 
@@ -82,5 +84,15 @@ router.post('/*', function(req, res, next) {
 router.put('/*', function(req, res, next){
 	console.log('PUT placeholder');
 });
+
+router.patch('/*', function(req, res, next){
+	console.log('AddressBookOperations.patch()')
+})
+
+function setBaseUrl(){
+	if(baseURL == ''){
+		baseURL = config.getBaseUrl()
+	}
+}
 
 module.exports = router;

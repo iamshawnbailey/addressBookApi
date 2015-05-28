@@ -31,7 +31,7 @@ app.use('/', routes);
 
 //  Generic paths for REST GET and POST requests
 //  These are passed along to the js files for further processing
-app.use('/api/v1/addressbook', addressBookOperations);
+app.use('/api/v1/addressbooks', addressBookOperations);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
