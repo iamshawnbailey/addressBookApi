@@ -79,16 +79,29 @@ function selectOperation(reourceType, operation, jsonString, dbname, collection,
 
 	console.log('MongoConnection.selectOperation()dbConnection equals: ' + dbConnection)
 
-	if(operation == 'insert') {
 
-		console.log('Connected to MongoDB with URL: ' + mongoURL + collection);
+
+	if(operation == 'post') {
+
+		// If we're creating a new Addressbook then we need to create the new collectino and add some constraints
+		if(resourceType == 'addressbook'){
+			mongoCreateAddressbook(dbConnection, dbname, JSON.parse(jsonString).name, function(err){
+				if(err){
+					callback(err, jsonString)
+				}
+
+				return
+			})
+		}
+
+		console.log('MongoConnection.selectOperation() Connected to MongoDB with URL: ' + mongoURL + collection);
 		mongoInsert(dbConnection, jsonString, collection, function (err, jsonString) {
 			//console.log('Closing DB Connection');
 			//dbConnection.close()
 			callback(err, jsonString)
 		})
 
-	}else if(operation == 'query'){
+	}else if(operation == 'get'){
 
 		console.log('MongoConnection.selectOperation() Connected to MongoDB with URL: ' + mongoURL + collection);
 		mongoQuery(dbConnection, jsonString, collection, function(err, jsonObjectsArray){
@@ -99,6 +112,7 @@ function selectOperation(reourceType, operation, jsonString, dbname, collection,
 
 
 //  Loads the addressbooks from the DB and populates the addressBooks array with the name values
+/*
 function loadAddressBooks(dbConnection, callback){
 	var cursor = dbConnection.collection('addressbooks').find()
 	cursor.toArray(function(err, array){
@@ -112,9 +126,10 @@ function loadAddressBooks(dbConnection, callback){
 	})
 
 }
-
+*/
 //  Search the addressBooks array for the current collection value
 //  If it's not already in the array then we insert it as a new addressbook and then push it onto the array
+/*
 function searchAndCreateAddressBook(addressBooks, addressBookId, jsonString, callback){
 	var error
 	for(i=0; i<addressBooks.length; i++ ){
@@ -140,6 +155,8 @@ function searchAndCreateAddressBook(addressBooks, addressBookId, jsonString, cal
 		callback(error, jsonString)
 	}
 }
+*/
+
 
 
 //  Get the connection to Mongo and return it in the callback
@@ -158,6 +175,21 @@ function getConnection(dbname, callback){
 	})
 }
 
+//  Function to create a new Addressbook
+//  This is run first to create the collection and add constraints
+//  The creation of the addressbook record in the addressbooks collection is handled by mongoInsert
+function mongoCreateAddressbook(dbConnection, dbname, collection, callback){
+	console.log('MongoConnection.mongoCreateAddressbook() creating new addressbook')
+	dbConnection.collection(collection).createIndex({"name":1,"resourcetype":1}, {unique:true}, function(err, result){
+		if(!err){
+			console.log("MongoConnection.mongoCreateAddressbook() Created a new Addressbook")
+			callback(err, jsonString)
+		}else{
+			console.log("MongoConnection.mongoCreateAddressbook() Error creating new Addressbook: " + err.toString());
+			callback(err, err);
+		}
+	})
+}
 
 //  Handles all insert operations to the DB
 function mongoInsert(dbConnection, jsonString, collection, callback){

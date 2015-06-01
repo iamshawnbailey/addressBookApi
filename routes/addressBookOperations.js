@@ -25,16 +25,20 @@ router.get('/*', function(req, res, next) {
 	setBaseUrl()
 	parsedURL = url.parse(req.url);
 	var pathArray = req.path.toString().split('/')
+
+	if(pathArray.length > 1){
+		collection = pathArray[1]
+	}
+
 	if(pathArray.length == 2){
 		resourceType = 'addressbook'
-		collection = pathArray[1]
 		location = baseURL + collection
 		links = JSON.parse('{"contacts" : "' + baseURL + collection + '/contacts/", "groups" : "' + baseURL + collection + '/groups/"}')
 	}
 
-	buildJsonStringModule.buildJsonString(resourceType, 'query', jsonQueryString, collection, function(err, jsonStringArg){
+	buildJsonStringModule.buildJsonString(resourceType, 'get', req, jsonQueryString, collection, function(err, jsonStringArg){
 		jsonString = jsonStringArg
-		mongoConnection.mongoOperation(resourceType, 'query', jsonString, jsonQueryString, dbname, collection, function(err, responseString){
+		mongoConnection.mongoOperation(resourceType, 'get', jsonString, jsonQueryString, dbname, collection, function(err, responseString){
 			if(!err) {
 				console.log("AddressBookOperations.get() response: " + responseString)
 				res.location(location)
@@ -57,22 +61,53 @@ router.post('/*', function(req, res, next) {
 	parsedURL = url.parse(req.url);
 	var qString = searchstring.getSearchString(parsedURL);
 
+	if(pathArray.length > 1){
+		collection = pathArray[1]
+	}
+
+	// Path indicates an addressbook creation
 	if((pathArray.length == 2)){
 		resourceType = 'addressbook'
-		collection = pathArray[1];
 
-		jsonString = '{"name" : "' + collection + '","url" : "' + baseURL + collection + '" }'
-		console.log('AddressBookOperations.post() value of jsonString passed to mongoConnection.mongoOperation(): ' + jsonString);
-		mongoConnection.mongoOperation(resourceType, 'insert', jsonString, jsonQueryString, dbname, collection, function(err, responseString) {
+		buildJsonStringModule.buildJsonString(resourceType, 'post', req, jsonQueryString, collection, function(err, jsonStringArg) {
+			jsonString = jsonStringArg
+			console.log('AddressBookOperations.post() value of jsonString passed to mongoConnection.mongoOperation(): ' + jsonString);
+			mongoConnection.mongoOperation(resourceType, 'post', jsonString, jsonQueryString, dbname, collection, function (err, responseString) {
 
-			if(!err) {
-				console.log("AddressBookOperations.post() response: " + responseString)
-				res.status(201).json(JSON.parse(responseString))
-			}else{
-				console.log("AddressBookOperations.post() error response: " + err.toString())
-				res.status(500).json(err)
+				if (!err) {
+					console.log("AddressBookOperations.post() response: " + responseString)
+					res.status(201).json(JSON.parse(responseString))
+				} else {
+					console.log("AddressBookOperations.post() error response: " + err.toString())
+					res.status(500).json(err)
 
-			}
+				}
+			})
+		})
+
+	//  Here the path indicates that it's a Group creation
+	}else if((pathArray.length == 3) && (pathArray[2] == 'groups')){
+		resourceType = 'group'
+
+		console.log('AddressBookOperations.post() Request Body for Group Creation: ' + req.body)
+
+		buildJsonStringModule.buildJsonString(resourceType, 'post', req, jsonQueryString, collection, function(err, jsonStringArg) {
+			jsonString = jsonStringArg
+
+			console.log('AddressBookOperations.post() creating a new Group with jsonString: ' + jsonString)
+
+			mongoConnection.mongoOperation(resourceType, 'post', jsonString, jsonQueryString, dbname, collection, function(err, responseString) {
+
+				if(!err) {
+					console.log("AddressBookOperations.post() response: " + responseString)
+					res.status(201).json(JSON.parse(responseString))
+				}else{
+					console.log("AddressBookOperations.post() error response: " + err.toString())
+					res.status(500).json(err)
+
+				}
+			})
+
 		})
 	}
 });
