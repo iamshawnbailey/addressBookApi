@@ -116,6 +116,29 @@
                         }
                     }
                 }
+            },
+            "delete": {
+                "description": "Delete all contacts in the addressbook\n",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "name",
+                        "description": "The name of the addressbook",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Successful responses"
+                    },
+                    "500": {
+                        "description": "Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
             }
         },
         "/addressbooks/{name}/groups": {
@@ -214,6 +237,29 @@
                         "schema": {
                             "$ref": "#/definitions/ErrorResponse"
                         }
+                    },
+                    "500": {
+                        "description": "Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete all groups in the addressbook\n",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "name",
+                        "description": "Name of the Addressbook",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Successful responses"
                     },
                     "500": {
                         "description": "Server Error",
@@ -359,6 +405,42 @@
                         }
                     }
                 }
+            },
+            "delete": {
+                "description": "Delete the specified contact from the Addressbook\n",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "name",
+                        "description": "Name of the Addressbook",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "in": "path",
+                        "name": "contact",
+                        "description": "Contact ID to delete",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Successful responses"
+                    },
+                    "405": {
+                        "description": "Invalid input",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
             }
         },
         "/addressbooks/{name}/contacts/{contact}/phones": {
@@ -443,6 +525,42 @@
                                 "$ref": "#/definitions/Phone"
                             }
                         }
+                    },
+                    "405": {
+                        "description": "Invalid Input",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete all of the phones for a contact\n",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "name",
+                        "description": "Name of the Addressbook",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "in": "path",
+                        "name": "contact",
+                        "description": "The contact ID for the phone records",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Successful responses"
                     },
                     "405": {
                         "description": "Invalid Input",
@@ -633,6 +751,49 @@
                         }
                     }
                 }
+            },
+            "delete": {
+                "description": "Delete the specified phone record for the contact\n",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "name",
+                        "description": "Name of the Addressbook",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "in": "path",
+                        "name": "contact",
+                        "description": "Contact ID that the phone record belongs to",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "in": "path",
+                        "name": "phone",
+                        "description": "The phone record ID to be deleted",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Successful responses"
+                    },
+                    "405": {
+                        "description": "Invalid Input",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponses"
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
             }
         },
         "/addressbooks/{name}/contacts/{contact}/addresses": {
@@ -717,6 +878,42 @@
                                 "$ref": "#/definitions/Address"
                             }
                         }
+                    },
+                    "405": {
+                        "description": "Invalid Input",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete all addresses for a contact\n",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "name",
+                        "description": "Name of the Addressbook",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "in": "path",
+                        "name": "contact",
+                        "description": "The contact ID to delete the addresses from",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Successful responses"
                     },
                     "405": {
                         "description": "Invalid Input",
@@ -907,6 +1104,49 @@
                         }
                     }
                 }
+            },
+            "delete": {
+                "description": "Delect the given address from the contact\n",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "name",
+                        "description": "The name of the Addressbook",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "in": "path",
+                        "name": "contact",
+                        "description": "The contact ID to delete the address from",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "in": "path",
+                        "name": "address",
+                        "description": "The address record ID to delete",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Successful responses"
+                    },
+                    "405": {
+                        "description": "Invalid Input",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
             }
         },
         "/addressbooks/{name}/contacts/{contact}/emails": {
@@ -991,6 +1231,42 @@
                                 "$ref": "#/definitions/Email"
                             }
                         }
+                    },
+                    "405": {
+                        "description": "Invalid Input",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete all email records for a contact\n",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "name",
+                        "description": "Name of the Addressbook",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "in": "path",
+                        "name": "contact",
+                        "description": "The contact ID you want to delete the email records from",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Successful responses"
                     },
                     "405": {
                         "description": "Invalid Input",
@@ -1181,6 +1457,49 @@
                         }
                     }
                 }
+            },
+            "delete": {
+                "description": "Delete the given email record for the contact\n",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "name",
+                        "description": "Name of the Addressbook",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "in": "path",
+                        "name": "contact",
+                        "description": "The contact ID to delete the email record from",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "in": "path",
+                        "name": "email",
+                        "description": "Email record ID to delete",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Successful responses"
+                    },
+                    "405": {
+                        "description": "Invalid Input",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
             }
         },
         "/addressbooks/{name}/contacts/{contact}/bday": {
@@ -1356,6 +1675,42 @@
                         }
                     }
                 }
+            },
+            "delete": {
+                "description": "Delete a group record from a contact\n",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "name",
+                        "description": "Name of the Addressbook",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "in": "path",
+                        "name": "group",
+                        "description": "Group record ID to delete",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Successful responses"
+                    },
+                    "405": {
+                        "description": "Invalid Input",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
             }
         }
     },
@@ -1379,6 +1734,9 @@
                     "type": "string"
                 },
                 "url": {
+                    "type": "string"
+                },
+                "recordtype": {
                     "type": "string"
                 },
                 "name": {
