@@ -46,7 +46,7 @@ router.get('/*', function(req, res, next) {
 				res.status(200).json(JSON.parse(responseString))
 			}else{
 				console.log("AddressBookOperations.get() error response: " + err.toString())
-				res.status(500).json(err)
+				res.status(500).json(JSON.parse(err))
 			}
 		})
 	})
@@ -79,8 +79,10 @@ router.post('/*', function(req, res, next) {
 					res.status(201).json(JSON.parse(responseString))
 				} else {
 					console.log("AddressBookOperations.post() error response: " + err.toString())
-					res.status(500).json(err)
-
+					buildJsonStringModule.buildJsonString(resourceType, 'error', err, jsonQueryString, collection, function(err, jsonStringArg){
+						console.log('AddressBookOperations.post() Returning error JSON: ' + jsonStringArg)
+						res.status(500).json(JSON.parse(jsonStringArg))
+					})
 				}
 			})
 		})
@@ -122,6 +124,36 @@ router.put('/*', function(req, res, next){
 
 router.patch('/*', function(req, res, next){
 	console.log('AddressBookOperations.patch()')
+})
+
+
+router.delete('/*', function(req, res, next){
+	console.log('AddressBookOperation.delete()')
+
+	var pathArray = req.path.toString().split('/');
+	parsedURL = url.parse(req.url);
+	var qString = searchstring.getSearchString(parsedURL);
+
+	if(pathArray.length == 2){
+		resourceType = 'addressbook'
+
+		buildJsonStringModule.buildJsonString(resourceType, 'delete', req, jsonQueryString, collection, function(err, jsonStringArg) {
+			jsonString = jsonStringArg
+			console.log('AddressBookOperations.delete() value of jsonString passed to mongoConnection.mongoOperation(): ' + jsonString);
+			mongoConnection.mongoOperation(resourceType, 'delete', jsonString, jsonQueryString, dbname, collection, function (err, responseString) {
+
+				if (!err) {
+					console.log("AddressBookOperations.delete() response: " + responseString)
+					res.status(201).json(JSON.parse(responseString))
+				} else {
+					console.log("AddressBookOperations.delete() error response: " + err.toString())
+					res.status(500).json(err)
+
+				}
+			})
+		})
+	}
+
 })
 
 function setBaseUrl(){

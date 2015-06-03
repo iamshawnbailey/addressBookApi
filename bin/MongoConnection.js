@@ -80,13 +80,18 @@ function selectOperation(reourceType, operation, jsonString, dbname, collection,
 	console.log('MongoConnection.selectOperation()dbConnection equals: ' + dbConnection)
 
 
+	if(operation == 'get') {
 
-	if(operation == 'post') {
+		console.log('MongoConnection.selectOperation() Connected to MongoDB with URL: ' + mongoURL + collection);
+		mongoQuery(dbConnection, jsonString, collection, function (err, jsonObjectsArray) {
+			callback(err, jsonObjectsArray)
+		})
+	}else if(operation == 'post') {
 
 		// If we're creating a new Addressbook then we need to create the new collectino and add some constraints
-		if(resourceType == 'addressbook'){
-			mongoCreateAddressbook(dbConnection, dbname, JSON.parse(jsonString).name, function(err){
-				if(err){
+		if (resourceType == 'addressbook') {
+			mongoCreateAddressbook(dbConnection, dbname, JSON.parse(jsonString).name, function (err) {
+				if (err) {
 					callback(err, jsonString)
 				}
 
@@ -100,62 +105,21 @@ function selectOperation(reourceType, operation, jsonString, dbname, collection,
 			//dbConnection.close()
 			callback(err, jsonString)
 		})
+	}else if(operation == 'delete'){
+		console.log('MongoConnection.selectOperation() running delete operation')
 
-	}else if(operation == 'get'){
-
-		console.log('MongoConnection.selectOperation() Connected to MongoDB with URL: ' + mongoURL + collection);
-		mongoQuery(dbConnection, jsonString, collection, function(err, jsonObjectsArray){
-			callback(err, jsonObjectsArray)
-		})
-	}
-}
-
-
-//  Loads the addressbooks from the DB and populates the addressBooks array with the name values
-/*
-function loadAddressBooks(dbConnection, callback){
-	var cursor = dbConnection.collection('addressbooks').find()
-	cursor.toArray(function(err, array){
-		console.log('MongoConnection.loadAddressBooks() cursor array contents: ' + array)
-		for(i=0;i<array.length;i++){
-			console.log('MongoConnection.loadAddressBooks() array element value: ' + JSON.stringify(array[i]))
-			addressBooks.push(array[i].name)
-		}
-		console.log('MongoConnection.loadAddressBooks() addressbooks array contents: ' + addressBooks.toString())
-		callback(err, addressBooks)
-	})
-
-}
-*/
-//  Search the addressBooks array for the current collection value
-//  If it's not already in the array then we insert it as a new addressbook and then push it onto the array
-/*
-function searchAndCreateAddressBook(addressBooks, addressBookId, jsonString, callback){
-	var error
-	for(i=0; i<addressBooks.length; i++ ){
-		console.log('MongoConnection.searchAndCreateAddressBook() addressbook: ' + addressBooks[i])
-		if(addressBooks[i] == addressBookId) {
-			addressBookExists = true
-		}
-	}
-
-	//  If the addressbook does not exist then add it to the addressbooks collection
-	if(addressBookExists == false){
-		console.log('MongoConnection.searchAndCreateAddressBook() creating a new Address Book with: ' + jsonString)
-		mongoInsert(dbConnection, jsonString, 'addressbooks', function(err, result){
-			if(err){
-				console.log('MongoConnection.searchAndCreateAddressBook() Error inserting new AddressBook: ' + err.toString())
-				callback(err, addressBookId)
-			}else{
-				addressBooks.push(addressBookId)
-				callback(err, addressBookId)
+		mongoDelete(dbConnection, jsonString, collection, function (err, result) {
+			if(!err){
+				mongoDropCollection(dbConnection, collection, function(err, result){
+					callback(err, result)
+				})
+			}else {
+				callback(err, result)
 			}
 		})
-	}else{
-		callback(error, jsonString)
 	}
+
 }
-*/
 
 
 
@@ -214,14 +178,44 @@ function mongoQuery(dbConnection, jsonString, collection, callback){
 	console.log('MongoConnection.mongoQuery() Connected to Mongo to query collection: ' + collection);
 	var cursor = dbConnection.collection(collection).find(JSON.parse(jsonString))
 	cursor.toArray(function(err, jsonObjectsArray){
-		for(i=0;i<jsonObjectsArray.length;i++){
-			returnString = returnString + JSON.stringify(jsonObjectsArray[i])
+
+		// if the cursor is empty then we will return a specific error message
+		if(jsonObjectsArray.length == 0){
+			errString = '{"code" : 1234, "message" : {"message" : "No results found", "collection" : "' + collection + '", "query" : ' + jsonString + '}}'
+			console.log('MongoConnection.mongoQuery() Empty Resultset errString: ' + errString)
+			buildJsonStringModule.buildJsonString(resourceType, 'error', JSON.parse(errString), jsonQueryString, collection, function(err, jsonStringArg){
+				console.log('MongoConnection.mongoQuery() Returning empty resultset error: ' + jsonStringArg)
+				callback(jsonStringArg, jsonStringArg)
+			})
+		}else{
+			for(i=0;i<jsonObjectsArray.length;i++){
+				returnString = returnString + JSON.stringify(jsonObjectsArray[i])
+			}
+			console.log('MongoConnection.mongoQuery() return string: ' + returnString)
+			callback(err, returnString)
 		}
-		console.log('MongoConnection.mongoQuery() return string: ' + returnString)
-		callback(err, returnString)
 	})
 }
 
 
+function mongoDelete(dbConnection, jsonString, collection, callback){
+	console.log('MongoConnection.mongoDelete()')
 
+	dbConnection.collection(collection).deleteMany(JSON.parse(jsonString), function(err, result){
+		if(!err){
+			callback(err, result)
+		}else{
+			callback(err, result)
+		}
+	})
+}
+
+
+function mongoDropCollection(dbConnection, collection, callback){
+	console.log('MongoConnection.mongoDropCollection()')
+
+	dbConnection.collection(collection).drop(function(err, result){
+		callback(err, result)
+	})
+}
 

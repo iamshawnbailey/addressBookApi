@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f7774519-5249-4555-9434-690b30f3fa56" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/GroupsData.json" />
       <change type="MOVED" beforePath="C:\Users\scbailey\AppData\Roaming\npm\addressBookApi\routes\addressBookOperations.js" afterPath="$PROJECT_DIR$/routes/AddressBookOperations.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/BuildJsonString.js" afterPath="$PROJECT_DIR$/bin/BuildJsonString.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/MongoConnection.js" afterPath="$PROJECT_DIR$/bin/MongoConnection.js" />
@@ -40,18 +39,18 @@
       <file leaf-file-name="AddressBookOperations.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/AddressBookOperations.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-29.4">
-              <caret line="91" column="81" selection-start-line="91" selection-start-column="81" selection-end-line="91" selection-end-column="81" />
+            <state vertical-scroll-proportion="-21.48">
+              <caret line="52" column="2" selection-start-line="52" selection-start-column="2" selection-end-line="52" selection-end-column="2" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MongoConnection.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MongoConnection.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bin/MongoConnection.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-80.92">
-              <caret line="179" column="99" selection-start-line="179" selection-start-column="99" selection-end-line="179" selection-end-column="99" />
+            <state vertical-scroll-proportion="0.7117795">
+              <caret line="183" column="151" selection-start-line="183" selection-start-column="151" selection-end-line="183" selection-end-column="151" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -64,7 +63,15 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+              <folding>
+                <marker date="1433171142548" expanded="true" signature="358:3652" placeholder="post:" />
+                <marker date="1433171142548" expanded="true" signature="1949:3652" placeholder="/contacts:" />
+                <marker date="1433171142548" expanded="true" signature="3074:3652" placeholder="post:" />
+                <marker date="1433171142548" expanded="true" signature="3511:3652" placeholder="responses:" />
+                <marker date="1433171142548" expanded="true" signature="3530:3652" placeholder="201:" />
+                <marker date="1433171142548" expanded="true" signature="3590:3652" placeholder="schema:" />
+                <marker date="1433171142548" expanded="true" signature="35269:35397" placeholder="properties:" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -72,18 +79,18 @@
       <file leaf-file-name="GroupsData.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GroupsData.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
+            <state vertical-scroll-proportion="0.0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="40" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BuildJsonString.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="BuildJsonString.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bin/BuildJsonString.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.31875">
-              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="44" column="78" selection-start-line="44" selection-start-column="78" selection-end-line="44" selection-end-column="78" />
               <folding>
                 <element signature="e#0#44#0" expanded="false" />
               </folding>
@@ -126,7 +133,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="dummy://restClient/response99.json" root0="SKIP_INSPECTION" />
+    <setting file="dummy://restClient/response59.json" root0="SKIP_INSPECTION" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -137,9 +144,9 @@
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/bin/ParseConfig.js" />
         <option value="$PROJECT_DIR$/GroupsData.json" />
-        <option value="$PROJECT_DIR$/bin/MongoConnection.js" />
-        <option value="$PROJECT_DIR$/routes/AddressBookOperations.js" />
         <option value="$PROJECT_DIR$/bin/BuildJsonString.js" />
+        <option value="$PROJECT_DIR$/routes/AddressBookOperations.js" />
+        <option value="$PROJECT_DIR$/bin/MongoConnection.js" />
       </list>
     </option>
   </component>
@@ -152,9 +159,8 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="1" />
-    <option name="y" value="1" />
     <option name="width" value="1598" />
-    <option name="height" value="858" />
+    <option name="height" value="860" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -179,7 +185,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -229,6 +234,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -245,6 +251,102 @@
   <component name="RestClientSettings">
     <option name="REQUEST_HISTORY">
       <list>
+        <RestClientRequest>
+          <option name="httpMethod" value="GET" />
+          <option name="urlBase" value="http://localhost:8080" />
+          <option name="urlPath" value="/api/v1/addressbooks/user5" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="DELETE" />
+          <option name="urlBase" value="http://localhost:8080" />
+          <option name="urlPath" value="/api/v1/addressbooks/user5" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8080" />
+          <option name="urlPath" value="/api/v1/addressbooks/user5" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8080" />
+          <option name="urlPath" value="/api/v1/addressbooks/user5" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
         <RestClientRequest>
           <option name="httpMethod" value="POST" />
           <option name="urlBase" value="http://localhost:8080" />
@@ -916,14 +1018,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1" y="1" width="1598" height="858" extended-state="0" />
+    <frame x="1" y="0" width="1598" height="860" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14664981" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="REST Client" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.536" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="REST Client" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39893618" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1348,7 +1450,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1433171142548" expanded="true" signature="358:3652" placeholder="post:" />
+            <marker date="1433171142548" expanded="true" signature="1949:3652" placeholder="/contacts:" />
+            <marker date="1433171142548" expanded="true" signature="3074:3652" placeholder="post:" />
+            <marker date="1433171142548" expanded="true" signature="3511:3652" placeholder="responses:" />
+            <marker date="1433171142548" expanded="true" signature="3530:3652" placeholder="201:" />
+            <marker date="1433171142548" expanded="true" signature="3590:3652" placeholder="schema:" />
+            <marker date="1433171142548" expanded="true" signature="35269:35397" placeholder="properties:" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1368,30 +1478,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bin/MongoConnection.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-80.92">
-          <caret line="179" column="99" selection-start-line="179" selection-start-column="99" selection-end-line="179" selection-end-column="99" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/AddressBookOperations.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-29.4">
-          <caret line="91" column="81" selection-start-line="91" selection-start-column="81" selection-end-line="91" selection-end-column="81" />
+        <state vertical-scroll-proportion="-21.48">
+          <caret line="52" column="2" selection-start-line="52" selection-start-column="2" selection-end-line="52" selection-end-column="2" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bin/BuildJsonString.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31875">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="44" column="78" selection-start-line="44" selection-start-column="78" selection-end-line="44" selection-end-column="78" />
           <folding>
             <element signature="e#0#44#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/MongoConnection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7117795">
+          <caret line="183" column="151" selection-start-line="183" selection-start-column="151" selection-end-line="183" selection-end-column="151" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
