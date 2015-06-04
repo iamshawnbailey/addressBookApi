@@ -1,0 +1,20 @@
+{
+  "apiname" : "addressbook",
+  "records" :
+  [
+    {
+      "method" : "get",
+      "resourcetype" : "addressbook",
+      "parameters" : [
+        {
+          "name" : "name",
+          "value" : "collection"
+        },
+        {
+          "name" : "url",
+          "value" : "url"
+        }
+      ]
+    }
+  ]
+}

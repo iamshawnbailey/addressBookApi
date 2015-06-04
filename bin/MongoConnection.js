@@ -20,6 +20,7 @@ var addressBookExists = false
 var addressBookId
 var contactId
 var groupId
+var origCollection = ''
 
 //  Entry point for the module that is called by addressBookOperations
 exports.mongoOperation = function(resourceTypeArg, operation, jsonStringArg, jsonQueryStringArg, dbname, collection, callback) {
@@ -32,7 +33,9 @@ exports.mongoOperation = function(resourceTypeArg, operation, jsonStringArg, jso
 	jsonQueryString = jsonQueryStringArg
 	addressBookId = collection
 
+	//  When performing an operation on an addressbook we keep a record in the addressbooks collection while the addressbook name is also a collection
 	if(resourceType == 'addressbook'){
+		origCollection = collection
 		collection = 'addressbooks'
 	}
 
@@ -110,9 +113,23 @@ function selectOperation(reourceType, operation, jsonString, dbname, collection,
 
 		mongoDelete(dbConnection, jsonString, collection, function (err, result) {
 			if(!err){
-				mongoDropCollection(dbConnection, collection, function(err, result){
-					callback(err, result)
-				})
+
+				//  When deleting an addressbook we delete the record from the addressbooks collection and drop the addressbook collection
+				if(collection == "addressbooks"){
+
+					// To drop the collection we need to ensure that we pass the addressbook name as the collection
+					mongoDropCollection(dbConnection, origCollection, function(err, result){
+						callback(err, result)
+					})
+				}else{
+
+					//  Otherwise the collection value should always be the addressbook name
+					mongoDropCollection(dbConnection, collection, function(err, result){
+						callback(err, result)
+					})
+				}
+
+
 			}else {
 				callback(err, result)
 			}
@@ -199,7 +216,7 @@ function mongoQuery(dbConnection, jsonString, collection, callback){
 
 
 function mongoDelete(dbConnection, jsonString, collection, callback){
-	console.log('MongoConnection.mongoDelete()')
+	console.log('MongoConnection.mongoDelete() Delete JSON String: ' + jsonString)
 
 	dbConnection.collection(collection).deleteMany(JSON.parse(jsonString), function(err, result){
 		if(!err){
@@ -212,7 +229,7 @@ function mongoDelete(dbConnection, jsonString, collection, callback){
 
 
 function mongoDropCollection(dbConnection, collection, callback){
-	console.log('MongoConnection.mongoDropCollection()')
+	console.log('MongoConnection.mongoDropCollection() Collection: ' + collection)
 
 	dbConnection.collection(collection).drop(function(err, result){
 		callback(err, result)

@@ -2,14 +2,79 @@
  * Created by scbailey on 5/18/2015.
  */
 
+var fs = require('fs')
 var config = require('./ParseConfig')
 
+var jsonDefinitionsObject
+var recordObjectArray = []
+var recordObjectHash = new Object()
+var recordOjbect
 var baseURL
 var jsonString
+var testJsonString = '{"'
+
+//  Load the MongoDB connection values from the config.json file
+fs.readFile('jsonstring_definitions.json', function(err, data){
+    console.log('BuildJsonString().readFile() jsonstring_definitions.json data: ' + data)
+    jsonDefinitionsObject = JSON.parse(data)
+    recordObjectArray = jsonDefinitionsObject.records
+
+    // load the records into a hash using a concatenation of the HTTP verb and resourcetype as the key
+    for(i=0; i<recordObjectArray.length; i++){
+        recordObjectHash[recordObjectArray[i].method + recordObjectArray[i].resourcetype] = recordObjectArray[i]
+    }
+
+    console.log('BuildJsonString.readFile() Record Object Hash: ' + recordObjectHash)
+
+    if(err){
+        console.log('BuildJsonString.readFile() Error reading jsonstring_definitions.json: ' + err)
+    }
+
+})
 
 exports.buildJsonString = function(resourceType, operation, req, jsonQueryString, collection, callback){
 
     var err
+
+    // create the hashkey from the input parameters
+    var hashKey = operation + resourceType
+    console.log('BuildJsonString.buildJsonString() Hash Key: ' + hashKey)
+
+    // Retrieve the record object with the hashkey.  If it doesn't exist then we'll populate err
+    recordObject = recordObjectHash[hashKey]
+
+    //  If the record object could be found with the hash key then we loop through its parameters to build the JSON string
+    if(recordObject){
+        for(i=0; i<recordObject.parameters.length; i++){
+            console.log('BuildJsonString.buildJsonString() Record Object: ' + JSON.stringify(recordObject))
+            testJsonString = testJsonString + recordObject.parameters[i].name + '" : "'
+
+            // Some parameters require runtime values while the rest will have the values specified in the definitions file
+            switch(recordObject.parameters[i].value){
+                case 'collection':
+                    testJsonString = testJsonString + collection
+                    break
+                case 'url':
+                    testJsonString = testJsonString + setBaseURL() + collection
+                    break
+                default:
+                    testJsonString = testJsonString + recordObject.parameters[i].value
+                    break
+            }
+
+            if(i == recordObject.parameters.length - 1){
+                testJsonString = testJsonString + '"}'
+            }else{
+                testJsonString = testJsonString + '", "'
+            }
+
+        }
+    }else(
+        err = 'No matching record found in jsonstring_definitions'
+    )
+
+
+    console.log('BuildJsonString().buildJsonString() Value of Test JSON String: ' + testJsonString)
 
     if(operation == 'get'){
         switch(resourceType) {
