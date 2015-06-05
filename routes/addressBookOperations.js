@@ -9,7 +9,10 @@ var buildJsonStringModule = require('../bin/BuildJsonString')
 var querystring = require('querystring');
 var mongoConnection = require('../bin/MongoConnection');
 
-var routerJSON
+var routerDefinitions
+var routerObjectArray
+var routerObjectHash = new Object()
+var routerObject
 var jsonString
 var jsonQueryString
 var dbname = 'addressbook'
@@ -21,9 +24,14 @@ var links
 var linksString = '{"'
 
 //  Load the route definitions from file
-fs.readFile('router_definitions.json', function(err, data){
+fs.readFile('./definitions/router_definitions.json', function(err, data){
 	console.log('AddressBookOperations.fs.readFile() Router Definitions data: ' + data)
-	routerJSON = JSON.parse(data)
+	routerDefinitions = JSON.parse(data)
+	routerObjectArray = routerDefinitions.routes
+
+	for(i=0; i<routerObjectArray.length; i++){
+		routerObjectHash[routerObjectArray[i].pathlength + routerObjectArray[i].pathname] = routerObjectArray[i]
+	}
 
 	if(err){
 		console.log('AddressBookOperations.fs.readFile() Error reading router_definitions.json: ' + err)
@@ -39,7 +47,7 @@ router.get('/*', function(req, res, next) {
 	var pathArray = req.path.toString().split('/')
 
 	//  The 0 index is empty so we set it to the pathroot value from the definitions file
-	pathArray[0] = routerJSON.pathroot
+	pathArray[0] = routerDefinitions.pathroot
 	console.log('AddressBookOperations.get() pathArray: ' + pathArray.toString())
 
 	//  Set the collection value to the name of the addressbook
@@ -47,28 +55,28 @@ router.get('/*', function(req, res, next) {
 		collection = pathArray[1]
 	}
 
-	for(i=0;i<routerJSON.routes.length;i++){
+	routerObject = routerObjectHash[pathArray.length + pathArray[pathArray.length - 1]]
+	if(!routerObject){
+		routerObject = routerObjectHash[pathArray.length + pathArray[pathArray.length - 2]]
+	}
 
-		if((pathArray.length == routerJSON.routes[i].pathlength) & ((routerJSON.routes[i].pathname == pathArray[pathArray.length - 1]) || (routerJSON.routes[i].pathname == pathArray[pathArray.length-2]))){
-			resourceType = routerJSON.routes[i].resourcetype
-			location = baseURL + collection
-			console.log('AddressBookOperations.get() found route for Resource Type: ' + resourceType)
+	resourceType = routerObject.resourcetype
+	location = baseURL + collection
+	console.log('AddressBookOperations.get() found route for Resource Type: ' + resourceType)
 
-			//  For each link associated with the route we need to build the string to then convert to a JSON object
-			for(y=0; y < routerJSON.routes[i].links.length; y++){
-				if(y == routerJSON.routes[i].links.length - 1){
-					linksString = linksString + routerJSON.routes[i].links[y].name + '" : "' + baseURL + collection + routerJSON.routes[i].links[y].path + '"}'
-				}else{
-					linksString = linksString + routerJSON.routes[i].links[y].name + '" : "' + baseURL + collection + routerJSON.routes[i].links[y].path + '", "'
-				}
-			}
-
-			console.log('AddressBookOperations.get() Links String: ' + linksString)
-			console.log('AddressBookOperations.get() Links String: ' + linksString)
-			links = JSON.parse(linksString)
-			linksString = '{"'
+	//  For each link associated with the route we need to build the string to then convert to a JSON object
+	for(y=0; y < routerObject.links.length; y++){
+		if(y == routerObject.links.length - 1){
+			linksString = linksString + routerObject.links[y].name + '" : "' + baseURL + collection + routerObject.links[y].path + '"}'
+		}else{
+			linksString = linksString + routerObject.links[y].name + '" : "' + baseURL + collection + routerObject.links[y].path + '", "'
 		}
 	}
+
+	console.log('AddressBookOperations.get() Links String: ' + linksString)
+	console.log('AddressBookOperations.get() Links String: ' + linksString)
+	links = JSON.parse(linksString)
+	linksString = '{"'
 
 
 	buildJsonStringModule.buildJsonString(resourceType, 'get', req, jsonQueryString, collection, function(err, jsonStringArg){
@@ -93,28 +101,26 @@ router.post('/*', function(req, res, next) {
 	console.log('AddressBookOperations.post() running')
 	setBaseUrl()
 	var pathArray = req.path.toString().split('/');
-	pathArray[0] = routerJSON.pathroot
+	pathArray[0] = routerDefinitions.pathroot
 
 
 	if(pathArray.length > 1){
 		collection = pathArray[1]
 	}
 
-	//  We're going to loop through the route entries from the destinations file
-	//  When we find a match on the pathlength we set the resourceType and whatever other variables are appropriate for that path
-	for(i=0;i<routerJSON.routes.length;i++) {
+	routerObject = routerObjectHash[pathArray.length + pathArray[pathArray.length - 1]]
+	if(!routerObject){
+		routerObject = routerObjectHash[pathArray.length + pathArray[pathArray.length - 2]]
+	}
 
-		if ((pathArray.length == routerJSON.routes[i].pathlength) & ((routerJSON.routes[i].pathname == pathArray[pathArray.length - 1]) || (routerJSON.routes[i].pathname == pathArray[pathArray.length - 2]))) {
-			resourceType = routerJSON.routes[i].resourcetype
-			location = baseURL + collection
-			console.log('AddressBookOperations.post() found route for Resource Type: ' + resourceType)
+	resourceType = routerObject.resourcetype
+	location = baseURL + collection
+	console.log('AddressBookOperations.post() found route for Resource Type: ' + resourceType)
 
-			//  Not all route entries can have a query string
-			if (routerJSON.routes[i].querystring == true) {
-				parsedURL = url.parse(req.url);
-				var qString = searchstring.getSearchString(parsedURL);
-			}
-		}
+	//  Not all route entries can have a query string
+	if (routerObject.querystring == true) {
+		parsedURL = url.parse(req.url);
+		var qString = searchstring.getSearchString(parsedURL);
 	}
 
 	//  Build the JSON string that will be passed to the MongoConnection module
@@ -141,8 +147,6 @@ router.post('/*', function(req, res, next) {
 
 
 
-
-
 router.put('/*', function(req, res, next){
 	console.log('PUT placeholder');
 });
@@ -156,26 +160,27 @@ router.delete('/*', function(req, res, next){
 	console.log('AddressBookOperation.delete()')
 
 	var pathArray = req.path.toString().split('/');
-	pathArray[0] = routerJSON.pathroot
+	pathArray[0] = routerDefinitions.pathroot
 
 	if(pathArray.length > 1){
 		collection = pathArray[1]
 		console.log('AddressBookOperations.delete() Collection: ' + collection)
 	}
 
-	for(i=0;i<routerJSON.routes.length;i++) {
-
-		if ((pathArray.length == routerJSON.routes[i].pathlength) & ((routerJSON.routes[i].pathname == pathArray[pathArray.length - 1]) || (routerJSON.routes[i].pathname == pathArray[pathArray.length - 2]))) {
-			resourceType = routerJSON.routes[i].resourcetype
-			location = baseURL + collection
-			console.log('AddressBookOperations.delete() found route for Resource Type: ' + resourceType)
-
-			if (routerJSON.routes[i].querystring == true) {
-				parsedURL = url.parse(req.url);
-				var qString = searchstring.getSearchString(parsedURL);
-			}
-		}
+	routerObject = routerObjectHash[pathArray.length + pathArray[pathArray.length - 1]]
+	if(!routerObject){
+		routerObject = routerObjectHash[pathArray.length + pathArray[pathArray.length - 2]]
 	}
+
+	resourceType = routerObject.resourcetype
+	location = baseURL + collection
+	console.log('AddressBookOperations.delete() found route for Resource Type: ' + resourceType)
+
+	if (routerObject.querystring == true) {
+		parsedURL = url.parse(req.url);
+		var qString = searchstring.getSearchString(parsedURL);
+	}
+
 
 	buildJsonStringModule.buildJsonString(resourceType, 'delete', req, jsonQueryString, collection, function(err, jsonStringArg) {
 		jsonString = jsonStringArg

@@ -14,7 +14,7 @@ var jsonString
 var testJsonString = '{"'
 
 //  Load the MongoDB connection values from the config.json file
-fs.readFile('jsonstring_definitions.json', function(err, data){
+fs.readFile('./definitions/jsonstring_definitions.json', function(err, data){
     console.log('BuildJsonString().readFile() jsonstring_definitions.json data: ' + data)
     jsonDefinitionsObject = JSON.parse(data)
     recordObjectArray = jsonDefinitionsObject.records
@@ -36,45 +36,7 @@ exports.buildJsonString = function(resourceType, operation, req, jsonQueryString
 
     var err
 
-    // create the hashkey from the input parameters
-    var hashKey = operation + resourceType
-    console.log('BuildJsonString.buildJsonString() Hash Key: ' + hashKey)
 
-    // Retrieve the record object with the hashkey.  If it doesn't exist then we'll populate err
-    recordObject = recordObjectHash[hashKey]
-
-    //  If the record object could be found with the hash key then we loop through its parameters to build the JSON string
-    if(recordObject){
-        for(i=0; i<recordObject.parameters.length; i++){
-            console.log('BuildJsonString.buildJsonString() Record Object: ' + JSON.stringify(recordObject))
-            testJsonString = testJsonString + recordObject.parameters[i].name + '" : "'
-
-            // Some parameters require runtime values while the rest will have the values specified in the definitions file
-            switch(recordObject.parameters[i].value){
-                case 'collection':
-                    testJsonString = testJsonString + collection
-                    break
-                case 'url':
-                    testJsonString = testJsonString + setBaseURL() + collection
-                    break
-                default:
-                    testJsonString = testJsonString + recordObject.parameters[i].value
-                    break
-            }
-
-            if(i == recordObject.parameters.length - 1){
-                testJsonString = testJsonString + '"}'
-            }else{
-                testJsonString = testJsonString + '", "'
-            }
-
-        }
-    }else(
-        err = 'No matching record found in jsonstring_definitions'
-    )
-
-
-    console.log('BuildJsonString().buildJsonString() Value of Test JSON String: ' + testJsonString)
 
     if(operation == 'get'){
         switch(resourceType) {
@@ -82,6 +44,8 @@ exports.buildJsonString = function(resourceType, operation, req, jsonQueryString
                 jsonString = '{"name" : "' + collection + '"}'
                 break
         }
+
+        /*
     }else if(operation == 'post'){
         switch(resourceType) {
             case 'addressbook':
@@ -99,6 +63,7 @@ exports.buildJsonString = function(resourceType, operation, req, jsonQueryString
                 jsonString = '{"name" : "' + collection + '"}'
                 break
         }
+        */
     }else if(operation == 'error'){
         console.log('BuildJsonString.buildJsonString() Error string being built with error code: ' + req.code)
         switch(req.code){
@@ -115,7 +80,62 @@ exports.buildJsonString = function(resourceType, operation, req, jsonQueryString
 
     }
 
+
+    // create the hashkey from the input parameters
+    var hashKey = operation + resourceType
+    console.log('BuildJsonString.buildJsonString() Hash Key: ' + hashKey)
+
+    // Retrieve the record object with the hashkey.  If it doesn't exist then we'll populate err
+    recordObject = recordObjectHash[hashKey]
+
+    //  If the record object could be found with the hash key then we loop through its parameters to build the JSON string
+    if(recordObject){
+        jsonString = '{"'
+        for(i=0; i<recordObject.parameters.length; i++){
+            console.log('BuildJsonString.buildJsonString() Record Object: ' + JSON.stringify(recordObject))
+            jsonString = jsonString + recordObject.parameters[i].name + '" : "'
+
+            // Some parameters require runtime values while the rest will have the values specified in the definitions file
+            switch(recordObject.parameters[i].value){
+                case 'collection':
+                    jsonString = jsonString + collection
+                    break
+                case 'url':
+                    jsonString = jsonString + setBaseURL() + collection
+
+                    if(recordObject.parameters[i].path){
+                        for(y=0; y<recordObject.parameters[i].path.length; y++){
+                            if(recordObject.parameters[i].path[y].source == 'body'){
+                                jsonString = jsonString + '/' + req.body[recordObject.parameters[i].path[y].value]
+                            }else {
+                                jsonString = jsonString + '/' + recordObject.parameters[i].path[y].value
+                            }
+                        }
+                    }
+
+                    break
+                case 'body':
+                    jsonString = jsonString + req.body[recordObject.parameters[i].name]
+                    break
+                default:
+                    jsonString = jsonString + recordObject.parameters[i].value
+                    break
+            }
+
+            if(i == recordObject.parameters.length - 1){
+                jsonString = jsonString + '"}'
+            }else{
+                jsonString = jsonString + '", "'
+            }
+
+        }
+    }
+
+
+    console.log('BuildJsonString().buildJsonString() Value of Test JSON String: ' + testJsonString)
+
     callback(err, jsonString)
+    jsonString = ''
 }
 
 // Consistently set the Base URL

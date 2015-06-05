@@ -1,0 +1,52 @@
+/*
+The purpose of this file is to separate request routing from the specific values appropriate for the API.
+
+All API specific values should be specified here so that the code itself can remain agnostic to the particular API it's used for.
+
+pathroot:  The root resource of the API and perhaps the name of the DB instance it uses
+routes:  Contain all of the information needed to accurately route the request for fulfillment.  It includes:
+
+pathlength:  How long the corresponding request path is for this route (1 based)
+pathname:  The most specific resource that the path is requesting (commonly plural like what is used in the path)
+resourcetype:  The type of the resource that the request is specifying (typcially singular)
+querystring:  Is a query string applicable (never required)
+links:  An array of JSON objects that define the 'links' HTTP response attribute.  Contains:
+
+name: The 'rel' name of the link
+path: The partial path string to be used.
+
+*/
+
+{
+  "pathroot" : "addressbooks",
+  "routes": [
+    {
+      "pathlength": 1,
+      "pathname" : "addressbooks",
+      "resourcetype": "addressbook",
+      "querystring": false
+    },
+    {
+      "pathlength": 2,
+      "pathname" : "addressbooks",
+      "resourcetype": "addressbook",
+      "querystring": false,
+      "links" : [
+        {
+          "name" : "contacts",
+          "path" : "/contacts/"
+        },
+        {
+          "name" : "groups",
+          "path" : "/groups/"
+        }
+      ]
+    },
+    {
+      "pathlength": 3,
+      "pathname" : "groups",
+      "resourcetype": "group",
+      "querystring": false
+    }
+  ]
+}
