@@ -1,20 +1,4 @@
-/*
-The purpose of this file is to define the JSON strings that are created for the various requests that the API can accept.
-These JSON strings are used for DB operations and HTTP responses
 
-record:  Encapsulates the combination of HTTP method and resource type
-Each 'record' constists of the following:
-method:  The HTTP verb of the request
-resourcetype:  The type of resource the request is for.  Resource types are defined in router_definitions.json and are loaded when the request is processed
-in the router.
-parameters:  These are the parameters that are needed to build the JSON string for DB operations and HTTP responses
-
-The parameters will typically include a URL for the resource and this type of parameter may need a variety values in order to build the URL
-To handle this there is a 'path' parameter type that is an array of JSON objects that have the following attributes:
-value:  The value of the path parameter
-source:  The source of the value which can be this file, the request path or the request body
-
-*/
 {
   "apiname" : "addressbook",
   "records" : [
@@ -67,9 +51,6 @@ source:  The source of the value which can be this file, the request path or the
         {
           "name" : "url",
           "value" : "url",
-
-          // Most of the generated URLs will include a combination of consistent values and dynamic values
-          // If consistent then the 'source' is 'this', if it comes from the request path then 'path' and if the req body then 'body'
           "path" : [
             {
               "value" : "groups",
@@ -89,6 +70,32 @@ source:  The source of the value which can be this file, the request path or the
           "name" : "members",
           "value" : "body",
           "type" : "array"
+        }
+      ]
+    },
+    {
+      "method" : "get",
+      "resourcetype" : "group",
+      "parameters" : [
+        {
+          "name" : "groupname",
+          "value" : "path",
+          "index" : 3
+        },
+        {
+          "name" : "url",
+          "value" : "url",
+          "path" : [
+            {
+              "value" : "groups",
+              "source" : "this"
+            },
+            {
+              "value" : "groupname",
+              "source" : "path",
+              "index" : 3
+            }
+          ]
         }
       ]
     },

@@ -193,6 +193,7 @@ function mongoInsert(dbConnection, jsonString, collection, callback){
 function mongoQuery(dbConnection, jsonString, collection, callback){
 	var returnString = ''
 	console.log('MongoConnection.mongoQuery() Connected to Mongo to query collection: ' + collection);
+	console.log('MongoConnection.mongoQuery() Using JSON Query String: ' + jsonString)
 	var cursor = dbConnection.collection(collection).find(JSON.parse(jsonString))
 	cursor.toArray(function(err, jsonObjectsArray){
 

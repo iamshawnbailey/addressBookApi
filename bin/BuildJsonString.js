@@ -11,6 +11,7 @@ var recordObjectHash = new Object()
 var recordOjbect
 var baseURL
 var jsonString
+var pathArray
 var testJsonString = '{"'
 
 //  Load the MongoDB connection values from the config.json file
@@ -91,31 +92,50 @@ exports.buildJsonString = function(resourceType, operation, req, jsonQueryString
     //  If the record object could be found with the hash key then we loop through its parameters to build the JSON string
     if(recordObject){
         jsonString = '{"'
+
+        //  Loop through the parameters of the recordObject to build the JSON string
+        //  This string is used for all DB operations
         for(i=0; i<recordObject.parameters.length; i++){
             console.log('BuildJsonString.buildJsonString() Record Object: ' + JSON.stringify(recordObject))
             jsonString = jsonString + recordObject.parameters[i].name + '" : "'
 
             // Some parameters require runtime values while the rest will have the values specified in the definitions file
             switch(recordObject.parameters[i].value){
+
+                //  If the parameter is of type 'collection' then we're probably getting an addressbook
                 case 'collection':
                     jsonString = jsonString + collection
                     break
+
+                //  The 'url' is the URL value that is stored in the DB for the record of interest.
+                    //  We build the value based on the definition and this value can be used for any DB operation
                 case 'url':
                     jsonString = jsonString + setBaseURL() + collection
 
+                    //  This is to build the full path for the resource URL
+                    //  Value can come from the request body, request path or the definitions file
                     if(recordObject.parameters[i].path){
                         for(y=0; y<recordObject.parameters[i].path.length; y++){
                             if(recordObject.parameters[i].path[y].source == 'body'){
                                 jsonString = jsonString + '/' + req.body[recordObject.parameters[i].path[y].value]
-                            }else {
+                            }else if(recordObject.parameters[i].path[y].source == 'path') {
+                                jsonString = jsonString + '/' + req.path.toString().split('/')[recordObject.parameters[i].path[y].index]
+                            }else{
                                 jsonString = jsonString + '/' + recordObject.parameters[i].path[y].value
                             }
                         }
                     }
 
                     break
+
+                //  The parameter value is in the request body so we'll retrieve it from there
                 case 'body':
                     jsonString = jsonString + req.body[recordObject.parameters[i].name]
+                    break
+
+                //  The parameter is of type 'path' so we need to just pull the value from the request path at the specified index
+                case 'path':
+                    jsonString = jsonString + req.path.toString().split('/')[recordObject.parameters[i].index]
                     break
                 default:
                     jsonString = jsonString + recordObject.parameters[i].value
@@ -132,7 +152,7 @@ exports.buildJsonString = function(resourceType, operation, req, jsonQueryString
     }
 
 
-    console.log('BuildJsonString().buildJsonString() Value of Test JSON String: ' + testJsonString)
+    console.log('BuildJsonString().buildJsonString() Value of JSON String: ' + jsonString)
 
     callback(err, jsonString)
     jsonString = ''

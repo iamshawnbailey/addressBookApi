@@ -30,6 +30,7 @@ fs.readFile('./definitions/router_definitions.json', function(err, data){
 	routerObjectArray = routerDefinitions.routes
 
 	for(i=0; i<routerObjectArray.length; i++){
+		console.log('AddressBookOperations.readFile() Hash Key Value: ' + routerObjectArray[i].pathlength + routerObjectArray[i].pathname)
 		routerObjectHash[routerObjectArray[i].pathlength + routerObjectArray[i].pathname] = routerObjectArray[i]
 	}
 
@@ -55,9 +56,11 @@ router.get('/*', function(req, res, next) {
 		collection = pathArray[1]
 	}
 
-	routerObject = routerObjectHash[pathArray.length + pathArray[pathArray.length - 1]]
+	//  Find the Hash entry for the combination of the path length and pathname
+	//  The index is 0 based so we have to subtract 1 from the length value
+	routerObject = routerObjectHash[(pathArray.length - 1) + pathArray[pathArray.length - 1]]
 	if(!routerObject){
-		routerObject = routerObjectHash[pathArray.length + pathArray[pathArray.length - 2]]
+		routerObject = routerObjectHash[(pathArray.length - 1) + pathArray[pathArray.length - 2]]
 	}
 
 	resourceType = routerObject.resourcetype
@@ -65,11 +68,31 @@ router.get('/*', function(req, res, next) {
 	console.log('AddressBookOperations.get() found route for Resource Type: ' + resourceType)
 
 	//  For each link associated with the route we need to build the string to then convert to a JSON object
-	for(y=0; y < routerObject.links.length; y++){
-		if(y == routerObject.links.length - 1){
-			linksString = linksString + routerObject.links[y].name + '" : "' + baseURL + collection + routerObject.links[y].path + '"}'
+	for(i=0; i < routerObject.links.length; i++){
+
+		//  All links start with the name of the link and the URL has the same base
+		linksString = linksString + routerObject.links[i].name + '" : "' + baseURL + collection + '/'
+
+		//  Loop through the path entries for each link
+		//  The path entries can come from the request path, request body or the router definition
+		for(y=0; y < routerObject.links[i].path.length; y++){
+			switch(routerObject.links[i].path[y].source) {
+				case 'path':
+					linksString = linksString + req.path.toString().split('/')[routerObject.links[i].path[y].index] + '/'
+					break
+				case 'body':
+					linksString = linksString + req.body[routerObject.links[i].path[y].value] + '/'
+					break
+				default:
+					linksString = linksString + routerObject.links[i].path[y].value + '/'
+					break
+			}
+		}
+
+		if(i == routerObject.links.length - 1) {
+			linksString = linksString + '"}'
 		}else{
-			linksString = linksString + routerObject.links[y].name + '" : "' + baseURL + collection + routerObject.links[y].path + '", "'
+			linksString = linksString + '", "'
 		}
 	}
 
@@ -78,7 +101,7 @@ router.get('/*', function(req, res, next) {
 	links = JSON.parse(linksString)
 	linksString = '{"'
 
-
+	//  Build the JSON string that will be used for the GET operation on the DB
 	buildJsonStringModule.buildJsonString(resourceType, 'get', req, jsonQueryString, collection, function(err, jsonStringArg){
 		jsonString = jsonStringArg
 		mongoConnection.mongoOperation(resourceType, 'get', jsonString, jsonQueryString, dbname, collection, function(err, responseString){
@@ -108,9 +131,9 @@ router.post('/*', function(req, res, next) {
 		collection = pathArray[1]
 	}
 
-	routerObject = routerObjectHash[pathArray.length + pathArray[pathArray.length - 1]]
+	routerObject = routerObjectHash[(pathArray.length - 1) + pathArray[pathArray.length - 1]]
 	if(!routerObject){
-		routerObject = routerObjectHash[pathArray.length + pathArray[pathArray.length - 2]]
+		routerObject = routerObjectHash[(pathArray.length - 1) + pathArray[pathArray.length - 2]]
 	}
 
 	resourceType = routerObject.resourcetype

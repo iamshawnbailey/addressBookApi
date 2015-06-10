@@ -270,6 +270,50 @@
                 }
             }
         },
+        "/addressbooks/{name}/groups/{group}/members": {
+            "get": {
+                "description": "Get all of the members of the group\n",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "name",
+                        "description": "The name of the addresbook",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "in": "path",
+                        "name": "group",
+                        "description": "Name of the group",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Successful responses",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "405": {
+                        "description": "Invalid Input",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorResponse"
+                        }
+                    }
+                }
+            }
+        },
         "/addressbooks/{name}/contacts/{contact}": {
             "get": {
                 "description": "Get the information for a contact\n",
@@ -784,7 +828,7 @@
                     "405": {
                         "description": "Invalid Input",
                         "schema": {
-                            "$ref": "#/definitions/ErrorResponses"
+                            "$ref": "#/definitions/ErrorResponse"
                         }
                     },
                     "500": {
