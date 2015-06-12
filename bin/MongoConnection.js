@@ -108,6 +108,15 @@ function selectOperation(reourceType, operation, jsonString, dbname, collection,
 			//dbConnection.close()
 			callback(err, jsonString)
 		})
+	}else if(operation == 'put'){
+		console.log('MongoConnection.selectOperation() running put operation')
+
+		console.log('MongoConnection.selectOperation() Connected to MongoDB with URL: ' + mongoURL + collection);
+		mongoPut(dbConnection, jsonString, collection, function (err, jsonString) {
+			//console.log('Closing DB Connection');
+			//dbConnection.close()
+			callback(err, jsonString)
+		})
 	}else if(operation == 'delete'){
 		console.log('MongoConnection.selectOperation() running delete operation')
 
@@ -177,6 +186,24 @@ function mongoInsert(dbConnection, jsonString, collection, callback){
 	console.log('MongoConnection.mongoInsert() Connected to Mongo for insert with:' + jsonString);
 	console.log('MongoConnection.mongoInsert() Inserting with JSON: ' + jsonString)
 	dbConnection.collection(collection).insertOne(JSON.parse(jsonString), function(err, result){
+		//assert.equal(err, null);
+		if(!err){
+			console.log("MongoConnection.mongoInsert() Inserted a document")
+			callback(err, jsonString)
+		}else{
+			console.log("MongoConnection.mongoInsert() Error inserting record: " + err.toString());
+			callback(err, err);
+		}
+	})
+}
+
+
+function mongoPut(dbConnection, jsonString, collection, callback){
+	console.log('MongoConnection.mongoPut() Connected to Mongo for put with:' + jsonString);
+	console.log('MongoConnection.mongoPut() Updating document with JSON: ' + jsonString)
+	var jsonObject = JSON.parse(jsonString)
+	var replaceId = '{"recordtype" : "' + jsonObject.recordtype + '", "recordid" : "' + JSON.parse(jsonString).recordid + '"}'
+	dbConnection.collection(collection).replaceOne(JSON.parse(replaceId), jsonObject, function(err, result){
 		//assert.equal(err, null);
 		if(!err){
 			console.log("MongoConnection.mongoInsert() Inserted a document")

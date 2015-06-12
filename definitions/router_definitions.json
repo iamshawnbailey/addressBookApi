@@ -48,7 +48,7 @@
               "source" : "this"
             },
             {
-              "value" : "groupname",
+              "value" : "recordid",
               "source" : "body"
             }
           ]
@@ -69,7 +69,7 @@
               "source" : "this"
             },
             {
-              "value" : "groupname",
+              "value" : "recordid",
               "source" : "path",
               "index" : 3
             },

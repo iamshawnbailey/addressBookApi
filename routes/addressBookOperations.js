@@ -71,20 +71,20 @@ router.get('/*', function(req, res, next) {
 	for(i=0; i < routerObject.links.length; i++){
 
 		//  All links start with the name of the link and the URL has the same base
-		linksString = linksString + routerObject.links[i].name + '" : "' + baseURL + collection + '/'
+		linksString = linksString + routerObject.links[i].name + '" : "' + baseURL + collection
 
 		//  Loop through the path entries for each link
 		//  The path entries can come from the request path, request body or the router definition
 		for(y=0; y < routerObject.links[i].path.length; y++){
 			switch(routerObject.links[i].path[y].source) {
 				case 'path':
-					linksString = linksString + req.path.toString().split('/')[routerObject.links[i].path[y].index] + '/'
+					linksString = linksString + '/' + req.path.toString().split('/')[routerObject.links[i].path[y].index]
 					break
 				case 'body':
-					linksString = linksString + req.body[routerObject.links[i].path[y].value] + '/'
+					linksString = linksString + '/' + req.body[routerObject.links[i].path[y].value]
 					break
 				default:
-					linksString = linksString + routerObject.links[i].path[y].value + '/'
+					linksString = linksString + '/' + routerObject.links[i].path[y].value
 					break
 			}
 		}
@@ -140,6 +140,40 @@ router.post('/*', function(req, res, next) {
 	location = baseURL + collection
 	console.log('AddressBookOperations.post() found route for Resource Type: ' + resourceType)
 
+	//  For each link associated with the route we need to build the string to then convert to a JSON object
+	for(i=0; i < routerObject.links.length; i++){
+
+		//  All links start with the name of the link and the URL has the same base
+		linksString = linksString + routerObject.links[i].name + '" : "' + baseURL + collection
+
+		//  Loop through the path entries for each link
+		//  The path entries can come from the request path, request body or the router definition
+		for(y=0; y < routerObject.links[i].path.length; y++){
+			switch(routerObject.links[i].path[y].source) {
+				case 'path':
+					linksString = linksString + '/' + req.path.toString().split('/')[routerObject.links[i].path[y].index]
+					break
+				case 'body':
+					linksString = linksString + '/' + req.body[routerObject.links[i].path[y].value]
+					break
+				default:
+					linksString = linksString + '/' + routerObject.links[i].path[y].value
+					break
+			}
+		}
+
+		if(i == routerObject.links.length - 1) {
+			linksString = linksString + '"}'
+		}else{
+			linksString = linksString + '", "'
+		}
+	}
+
+	console.log('AddressBookOperations.post() Links String: ' + linksString)
+	console.log('AddressBookOperations.post() Links String: ' + linksString)
+	links = JSON.parse(linksString)
+	linksString = '{"'
+
 	//  Not all route entries can have a query string
 	if (routerObject.querystring == true) {
 		parsedURL = url.parse(req.url);
@@ -156,6 +190,7 @@ router.post('/*', function(req, res, next) {
 
 			if (!err) {
 				console.log("AddressBookOperations.post() response: " + responseString)
+				res.links(links)
 				res.status(201).json(JSON.parse(responseString))
 			} else {
 				console.log("AddressBookOperations.post() error response: " + err.toString())
@@ -171,8 +206,20 @@ router.post('/*', function(req, res, next) {
 
 
 router.put('/*', function(req, res, next){
-	console.log('PUT placeholder');
-});
+	console.log('AddressBookOperations.put() running')
+
+	init(req, function(err, routerObject, collection, resourceType, location, jsonQueryString){
+
+		buildLinks(routerObject, req, function(err, links){
+
+			runOperation(resourceType, 'put', req, res, jsonQueryString, links, collection)
+
+		})
+	})
+
+})
+
+
 
 router.patch('/*', function(req, res, next){
 	console.log('AddressBookOperations.patch()')
@@ -182,44 +229,118 @@ router.patch('/*', function(req, res, next){
 router.delete('/*', function(req, res, next){
 	console.log('AddressBookOperation.delete()')
 
+	init(req, function(err, routerObject, collection, resourceType, location, jsonQueryString){
+
+		buildLinks(routerObject, req, function(err, links){
+
+			runOperation(resourceType, 'delete', req, res, jsonQueryString, links, collection)
+
+		})
+	})
+})
+
+
+
+function init(req, callback){
+	var err
+	setBaseUrl()
 	var pathArray = req.path.toString().split('/');
 	pathArray[0] = routerDefinitions.pathroot
 
+
 	if(pathArray.length > 1){
 		collection = pathArray[1]
-		console.log('AddressBookOperations.delete() Collection: ' + collection)
 	}
 
-	routerObject = routerObjectHash[pathArray.length + pathArray[pathArray.length - 1]]
+	routerObject = routerObjectHash[(pathArray.length - 1) + pathArray[pathArray.length - 1]]
 	if(!routerObject){
-		routerObject = routerObjectHash[pathArray.length + pathArray[pathArray.length - 2]]
+		routerObject = routerObjectHash[(pathArray.length - 1) + pathArray[pathArray.length - 2]]
 	}
 
 	resourceType = routerObject.resourcetype
 	location = baseURL + collection
-	console.log('AddressBookOperations.delete() found route for Resource Type: ' + resourceType)
+	console.log('AddressBookOperations.put() found route for Resource Type: ' + resourceType)
 
+
+
+	//  Not all route entries can have a query string
 	if (routerObject.querystring == true) {
 		parsedURL = url.parse(req.url);
-		var qString = searchstring.getSearchString(parsedURL);
+		jsonQueryString = searchstring.getSearchString(parsedURL);
 	}
 
+	callback(err, routerObject, collection, resourceType, location, jsonQueryString)
+}
 
-	buildJsonStringModule.buildJsonString(resourceType, 'delete', req, jsonQueryString, collection, function(err, jsonStringArg) {
+
+
+function runOperation(resourceType, operation, req, res, jsonQueryString, links, collection){
+	buildJsonStringModule.buildJsonString(resourceType, operation, req, jsonQueryString, collection, function(err, jsonStringArg) {
 		jsonString = jsonStringArg
-		console.log('AddressBookOperations.delete() value of jsonString passed to mongoConnection.mongoOperation(): ' + jsonString);
-		mongoConnection.mongoOperation(resourceType, 'delete', jsonString, jsonQueryString, dbname, collection, function (err, responseString) {
+		console.log('AddressBookOperations.runOperation() value of jsonString passed to mongoConnection.mongoOperation(): ' + jsonString);
+		mongoConnection.mongoOperation(resourceType, operation, jsonString, jsonQueryString, dbname, collection, function (err, responseString) {
 
 			if (!err) {
-				console.log("AddressBookOperations.delete() response: " + responseString)
+				console.log("AddressBookOperations.put() response: " + responseString)
+				res.links(links)
 				res.status(201).json(JSON.parse(responseString))
 			} else {
-				console.log("AddressBookOperations.delete() error response: " + err.toString())
-				res.status(500).json(err)
+				console.log("AddressBookOperations.put() error response: " + err.toString())
+				buildJsonStringModule.buildJsonString(resourceType, 'error', err, jsonQueryString, collection, function(err, jsonStringArg){
+					console.log('AddressBookOperations.put() Returning error JSON: ' + jsonStringArg)
+					res.status(500).json(JSON.parse(jsonStringArg))
+				})
 			}
 		})
 	})
-})
+}
+
+
+function buildLinks(routerObject, req, callback){
+	var err
+
+	if(routerObject.links.length == 0){
+		links = ''
+		callback(err, links)
+	}
+
+	//  For each link associated with the route we need to build the string to then convert to a JSON object
+	for(i=0; i < routerObject.links.length; i++){
+
+		//  All links start with the name of the link and the URL has the same base
+		linksString = linksString + routerObject.links[i].name + '" : "' + baseURL + collection
+
+		//  Loop through the path entries for each link
+		//  The path entries can come from the request path, request body or the router definition
+		for(y=0; y < routerObject.links[i].path.length; y++){
+			switch(routerObject.links[i].path[y].source) {
+				case 'path':
+					linksString = linksString + '/' + req.path.toString().split('/')[routerObject.links[i].path[y].index]
+					break
+				case 'body':
+					linksString = linksString + '/' + req.body[routerObject.links[i].path[y].value]
+					break
+				default:
+					linksString = linksString + '/' + routerObject.links[i].path[y].value
+					break
+			}
+		}
+
+		if(i == routerObject.links.length - 1) {
+			linksString = linksString + '"}'
+		}else{
+			linksString = linksString + '", "'
+		}
+	}
+
+	console.log('AddressBookOperations.put() Links String: ' + linksString)
+	console.log('AddressBookOperations.put() Links String: ' + linksString)
+	links = JSON.parse(linksString)
+	linksString = '{"'
+
+	callback(err, links)
+}
+
 
 
 function setBaseUrl(){

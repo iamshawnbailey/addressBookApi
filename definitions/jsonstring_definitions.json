@@ -57,13 +57,46 @@
               "source" : "this"
             },
             {
-              "value" : "groupname",
+              "value" : "recordid",
               "source" : "body"
             }
           ]
         },
         {
-          "name" : "groupname",
+          "name" : "recordid",
+          "value" : "body"
+        },
+        {
+          "name" : "members",
+          "value" : "body",
+          "type" : "array"
+        }
+      ]
+    },
+    {
+      "method" : "put",
+      "resourcetype" : "group",
+      "parameters" : [
+        {
+          "name" : "recordtype",
+          "value" : "group"
+        },
+        {
+          "name" : "url",
+          "value" : "url",
+          "path" : [
+            {
+              "value" : "groups",
+              "source" : "this"
+            },
+            {
+              "value" : "recordid",
+              "source" : "body"
+            }
+          ]
+        },
+        {
+          "name" : "recordid",
           "value" : "body"
         },
         {
@@ -78,7 +111,7 @@
       "resourcetype" : "group",
       "parameters" : [
         {
-          "name" : "groupname",
+          "name" : "recordid",
           "value" : "path",
           "index" : 3
         },
@@ -91,7 +124,7 @@
               "source" : "this"
             },
             {
-              "value" : "groupname",
+              "value" : "recordid",
               "source" : "path",
               "index" : 3
             }
@@ -104,7 +137,7 @@
       "resourcetype" : "group",
       "parameters" : [
         {
-          "name" : "groupid",
+          "name" : "recordid",
           "value" : "path"
         }
       ]
