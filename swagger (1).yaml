@@ -1448,7 +1448,7 @@ definitions:
         type: string
       recordtype:
         type: string
-      name:
+      recordid:
         type: string
       members:
         type: array
@@ -1458,11 +1458,13 @@ definitions:
     properties:
       id:
         type: string
+      recordtype:
+        type: string
+      recordid:
+        type: string
       url:
         type: string
       contacttype:
-        type: string
-      groupname: 
         type: string
       firstname:
         type: string
@@ -1505,8 +1507,10 @@ definitions:
         type: string
       state: 
         type: string
-      zip: 
+      postalcode: 
         type: integer
+      country:
+        type: string
   Phone:
     properties:
       id:

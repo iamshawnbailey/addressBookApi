@@ -7,7 +7,7 @@
       "resourcetype" : "addressbook",
       "parameters" : [
         {
-          "name" : "name",
+          "name" : "recordid",
           "value" : "collection"
         },
         {
@@ -21,7 +21,7 @@
       "resourcetype" : "addressbook",
       "parameters" : [
         {
-          "name" : "name",
+          "name" : "recordid",
           "value" : "collection"
         },
         {
@@ -35,7 +35,7 @@
       "resourcetype" : "addressbook",
       "parameters" : [
         {
-          "name" : "name",
+          "name" : "recordid",
           "value" : "collection"
         }
       ]
@@ -53,12 +53,12 @@
           "value" : "url",
           "path" : [
             {
-              "value" : "groups",
-              "source" : "this"
+              "name" : "groups",
+              "value" : "this"
             },
             {
-              "value" : "recordid",
-              "source" : "body"
+              "name" : "recordid",
+              "value" : "body"
             }
           ]
         },
@@ -86,12 +86,12 @@
           "value" : "url",
           "path" : [
             {
-              "value" : "groups",
-              "source" : "this"
+              "name" : "groups",
+              "value" : "this"
             },
             {
-              "value" : "recordid",
-              "source" : "body"
+              "name" : "recordid",
+              "value" : "body"
             }
           ]
         },
@@ -120,12 +120,12 @@
           "value" : "url",
           "path" : [
             {
-              "value" : "groups",
-              "source" : "this"
+              "name" : "groups",
+              "value" : "this"
             },
             {
-              "value" : "recordid",
-              "source" : "path",
+              "name" : "recordid",
+              "value" : "path",
               "index" : 3
             }
           ]
@@ -138,7 +138,91 @@
       "parameters" : [
         {
           "name" : "recordid",
-          "value" : "path"
+          "value" : "path",
+          "index" : 3
+        }
+      ]
+    },
+    {
+      "method" : "post",
+      "resourcetype" : "contact",
+      "resourcepath" : "contacts",
+      "parameters" : [
+        {
+          "name" : "recordtype",
+          "value" : "contact"
+        },
+        {
+          "name" : "recordid",
+          "value" : "body"
+        },
+        {
+          "name" : "url",
+          "value" : "url",
+          "path" : [
+            {
+              "name" : "contacts",
+              "value" : "this"
+            },
+            {
+              "name" : "recordid",
+              "value" : "body"
+            }
+          ]
+        },
+        {
+          "name" : "contacttype",
+          "value" : "body"
+        },
+        {
+          "name" : "groupmembership",
+          "value" : "body"
+        },
+        {
+          "name" : "firstname",
+          "value" : "body"
+        },
+        {
+          "name" : "lastname",
+          "value" : "body"
+        },
+        {
+          "name" : "bday",
+          "value" : "body"
+        },
+        {
+          "name" : "facebook",
+          "value" : "body"
+        },
+        {
+          "name" : "twitter",
+          "value" : "body"
+        },
+        {
+          "name" : "association",
+          "value" : "body"
+        },
+        {
+          "name" : "notes",
+          "value" : "body"
+        },
+        {
+          "name" : "addresses",
+          "resourcetype" : "address",
+          "value" : "body",
+          "type" : "jsonarray"
+        },
+        {
+          "name" : "phones",
+          "resourcetype" : "phone",
+          "value" : "body",
+          "type" : "jsonarray"
+        },
+        {
+          "name" : "emails",
+          "resourcetype" : "email",
+          "value" : "body",
+          "type" : "jsonarray"
         }
       ]
     }

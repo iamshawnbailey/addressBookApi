@@ -18,8 +18,8 @@
           "name" : "contacts",
           "path" : [
             {
-              "value" : "contacts",
-              "source" : "this"
+              "name" : "contacts",
+              "value" : "this"
             }
           ]
         },
@@ -27,8 +27,8 @@
           "name" : "groups",
           "path" : [
             {
-              "value" : "groups",
-              "source" : "this"
+              "name" : "groups",
+              "value" : "this"
             }
           ]
         }
@@ -44,12 +44,33 @@
           "name" : "groups",
           "path" : [
             {
-              "value" : "groups",
-              "source" : "this"
+              "name" : "groups",
+              "value" : "this"
             },
             {
-              "value" : "recordid",
-              "source" : "body"
+              "name" : "recordid",
+              "value" : "body"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "pathlength" : 2,
+      "pathname" : "contacts",
+      "resourcetype" : "contact",
+      "querystring" : true,
+      "links" : [
+        {
+          "name" : "contacts",
+          "path" : [
+            {
+              "name" : "contacts",
+              "value" : "this"
+            },
+            {
+              "name" : "recordid",
+              "value" : "body"
             }
           ]
         }
@@ -65,17 +86,17 @@
           "name" : "members",
           "path" : [
             {
-              "value" : "groups",
-              "source" : "this"
+              "name" : "groups",
+              "value" : "this"
             },
             {
-              "value" : "recordid",
-              "source" : "path",
+              "name" : "recordid",
+              "value" : "path",
               "index" : 3
             },
             {
-              "value" : "members",
-              "source" : "this"
+              "name" : "members",
+              "value" : "this"
             }
           ]
         }

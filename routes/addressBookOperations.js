@@ -232,15 +232,15 @@ function buildLinks(routerObject, req, callback){
 		//  Loop through the path entries for each link
 		//  The path entries can come from the request path, request body or the router definition
 		for(y=0; y < routerObject.links[i].path.length; y++){
-			switch(routerObject.links[i].path[y].source) {
+			switch(routerObject.links[i].path[y].value) {
 				case 'path':
 					linksString = linksString + '/' + req.path.toString().split('/')[routerObject.links[i].path[y].index]
 					break
 				case 'body':
-					linksString = linksString + '/' + req.body[routerObject.links[i].path[y].value]
+					linksString = linksString + '/' + req.body[routerObject.links[i].path[y].name]
 					break
 				default:
-					linksString = linksString + '/' + routerObject.links[i].path[y].value
+					linksString = linksString + '/' + routerObject.links[i].path[y].name
 					break
 			}
 		}

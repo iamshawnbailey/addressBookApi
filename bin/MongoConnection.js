@@ -93,7 +93,7 @@ function selectOperation(reourceType, operation, jsonString, dbname, collection,
 
 		// If we're creating a new Addressbook then we need to create the new collectino and add some constraints
 		if (resourceType == 'addressbook') {
-			mongoCreateAddressbook(dbConnection, dbname, JSON.parse(jsonString).name, function (err) {
+			mongoCreateAddressbook(dbConnection, dbname, JSON.parse(jsonString).recordid, function (err) {
 				if (err) {
 					callback(err, jsonString)
 				}
@@ -131,12 +131,18 @@ function selectOperation(reourceType, operation, jsonString, dbname, collection,
 						callback(err, result)
 					})
 				}else{
+					callback(err, result)
+				}
+
+				/*
+				else{
 
 					//  Otherwise the collection value should always be the addressbook name
 					mongoDropCollection(dbConnection, collection, function(err, result){
 						callback(err, result)
 					})
 				}
+				*/
 
 
 			}else {
@@ -169,8 +175,8 @@ function getConnection(dbname, callback){
 //  This is run first to create the collection and add constraints
 //  The creation of the addressbook record in the addressbooks collection is handled by mongoInsert
 function mongoCreateAddressbook(dbConnection, dbname, collection, callback){
-	console.log('MongoConnection.mongoCreateAddressbook() creating new addressbook')
-	dbConnection.collection(collection).createIndex({"name":1,"resourcetype":1}, {unique:true}, function(err, result){
+	console.log('MongoConnection.mongoCreateAddressbook() creating new addressbook: ' + collection)
+	dbConnection.collection(collection).createIndex({"recordid":1,"recordtype":1}, {unique:true}, function(err, result){
 		if(!err){
 			console.log("MongoConnection.mongoCreateAddressbook() Created a new Addressbook")
 			callback(err, jsonString)

@@ -2,8 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f7774519-5249-4555-9434-690b30f3fa56" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sampledata/ContactsData.json" />
       <change type="DELETED" beforePath="C:\Users\scbailey\AppData\Roaming\npm\addressBookApi\bin\jsonstring_definitions.json" afterPath="" />
       <change type="MOVED" beforePath="C:\Users\scbailey\AppData\Roaming\npm\addressBookApi\routes\addressBookOperations.js" afterPath="$PROJECT_DIR$/routes/AddressBookOperations.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/BuildJsonString.js" afterPath="$PROJECT_DIR$/bin/BuildJsonString.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sampledata/GroupsData.json" afterPath="$PROJECT_DIR$/sampledata/GroupsData.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/MongoConnection.js" afterPath="$PROJECT_DIR$/bin/MongoConnection.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/definitions/jsonstring_definitions.json" afterPath="$PROJECT_DIR$/definitions/jsonstring_definitions.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/definitions/router_definitions.json" afterPath="$PROJECT_DIR$/definitions/router_definitions.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/swagger (1).yaml" afterPath="$PROJECT_DIR$/swagger (1).yaml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/swagger.json" afterPath="$PROJECT_DIR$/swagger.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="addressBookApi.iws" />
@@ -25,21 +33,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="16" column="20" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AddressBookOperations.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="AddressBookOperations.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/AddressBookOperations.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.675">
-              <caret line="98" column="45" selection-start-line="98" selection-start-column="45" selection-end-line="98" selection-end-column="45" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="140" column="0" selection-start-line="140" selection-start-column="0" selection-end-line="140" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -48,8 +46,8 @@
       <file leaf-file-name="MongoConnection.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bin/MongoConnection.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="205" column="108" selection-start-line="205" selection-start-column="108" selection-end-line="205" selection-end-column="108" />
+            <state vertical-scroll-proportion="68.08">
+              <caret line="135" column="0" selection-start-line="135" selection-start-column="0" selection-end-line="135" selection-end-column="0" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -57,31 +55,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="swagger (1).yaml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/swagger (1).yaml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="GroupsData.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sampledata/GroupsData.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="44" />
+            <state vertical-scroll-proportion="-0.65384614">
+              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BuildJsonString.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ContactsData.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sampledata/ContactsData.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-16.653847">
+              <caret line="50" column="6" selection-start-line="50" selection-start-column="6" selection-end-line="50" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BuildJsonString.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bin/BuildJsonString.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="96" column="53" selection-start-line="96" selection-start-column="53" selection-end-line="96" selection-end-column="53" />
+            <state vertical-scroll-proportion="0.475">
+              <caret line="106" column="89" selection-start-line="106" selection-start-column="89" selection-end-line="106" selection-end-column="89" />
               <folding>
                 <element signature="e#0#44#0" expanded="false" />
               </folding>
@@ -104,8 +102,8 @@
       <file leaf-file-name="router_definitions.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/definitions/router_definitions.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="50" column="33" selection-start-line="50" selection-start-column="33" selection-end-line="50" selection-end-column="33" />
+            <state vertical-scroll-proportion="-64.07692">
+              <caret line="98" column="20" selection-start-line="98" selection-start-column="20" selection-end-line="98" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -114,8 +112,8 @@
       <file leaf-file-name="jsonstring_definitions.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/definitions/jsonstring_definitions.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-22.23077">
-              <caret line="76" column="21" selection-start-line="76" selection-start-column="21" selection-end-line="76" selection-end-column="21" />
+            <state vertical-scroll-proportion="27.153847">
+              <caret line="140" column="27" selection-start-line="140" selection-start-column="27" selection-end-line="140" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -144,7 +142,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="dummy://restClient/response21.json" root0="SKIP_INSPECTION" />
+    <setting file="dummy://restClient/response107.json" root0="SKIP_INSPECTION" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -158,12 +156,13 @@
         <option value="$PROJECT_DIR$/router_definitions.json" />
         <option value="$PROJECT_DIR$/bin/jsonstring_definitions.json" />
         <option value="$PROJECT_DIR$/definitions/readme.txt" />
-        <option value="$PROJECT_DIR$/bin/BuildJsonString.js" />
-        <option value="$PROJECT_DIR$/bin/MongoConnection.js" />
         <option value="$PROJECT_DIR$/definitions/router_definitions.json" />
+        <option value="$PROJECT_DIR$/routes/AddressBookOperations.js" />
         <option value="$PROJECT_DIR$/sampledata/GroupsData.json" />
         <option value="$PROJECT_DIR$/definitions/jsonstring_definitions.json" />
-        <option value="$PROJECT_DIR$/routes/AddressBookOperations.js" />
+        <option value="$PROJECT_DIR$/bin/MongoConnection.js" />
+        <option value="$PROJECT_DIR$/sampledata/ContactsData.json" />
+        <option value="$PROJECT_DIR$/bin/BuildJsonString.js" />
       </list>
     </option>
   </component>
@@ -176,9 +175,8 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="1" />
-    <option name="y" value="1" />
-    <option name="width" value="1845" />
-    <option name="height" value="1119" />
+    <option name="width" value="1901" />
+    <option name="height" value="1135" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -204,6 +202,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -280,7 +279,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -301,6 +299,398 @@
   <component name="RestClientSettings">
     <option name="REQUEST_HISTORY">
       <list>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8080" />
+          <option name="urlPath" value="/api/v1/addressbooks/user1/contacts" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{   &quot;recordid&quot; : &quot;user1Contact1&quot;,   &quot;contacttype&quot; : &quot;friend&quot;,   &quot;firstname&quot; : &quot;Contact&quot;,   &quot;lastname&quot; : &quot;One&quot;,   &quot;groupmembership&quot; : [&quot;user1Group1&quot;],   &quot;bday&quot; : &quot;08-29-1975&quot;,   &quot;facebook&quot; : &quot;conactone&quot;,   &quot;twitter&quot; : &quot;@contactone&quot;,   &quot;association&quot; : &quot;Friend from college&quot;,   &quot;notes&quot; : &quot;Empty Notes&quot;,   &quot;addresses&quot; : [     {       &quot;recordid&quot; : &quot;&quot;,       &quot;label&quot; : &quot;Home&quot;,       &quot;street1&quot; : &quot;1234 Happy Drive&quot;,       &quot;street2&quot; : &quot;&quot;,       &quot;city&quot; : &quot;Denver&quot;,       &quot;state&quot; : &quot;CO&quot;,       &quot;postalcode&quot; : &quot;80111&quot;,       &quot;country&quot; : &quot;United States&quot;     },     {       &quot;recordid&quot; : &quot;&quot;,       &quot;label&quot; : &quot;Work&quot;,       &quot;street1&quot; : &quot;1234 Business Drive&quot;,       &quot;street2&quot; : &quot;&quot;,       &quot;city&quot; : &quot;Denver&quot;,       &quot;state&quot; : &quot;CO&quot;,       &quot;postalcode&quot; : &quot;80111&quot;,       &quot;country&quot; : &quot;United States&quot;     }   ],   &quot;phones&quot; : [     {       &quot;recordid&quot; : &quot;&quot;,       &quot;label&quot; : &quot;Home&quot;,       &quot;number&quot; : &quot;303-333-3333&quot;     },     {       &quot;recordid&quot; : &quot;&quot;,       &quot;label&quot; : &quot;Work&quot;,       &quot;number&quot; : &quot;303-444-4444&quot;     }   ],   &quot;emails&quot; : [     {       &quot;recordid&quot; : &quot;&quot;,       &quot;label&quot; : &quot;Personal&quot;,       &quot;email&quot; : &quot;contact1@host.com&quot;     },     {       &quot;recordid&quot; : &quot;&quot;,       &quot;label&quot; : &quot;Work&quot;,       &quot;email&quot; : &quot;contact1work@host.com&quot;     }   ] }" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="DELETE" />
+          <option name="urlBase" value="http://localhost:8080" />
+          <option name="urlPath" value="/api/v1/addressbooks/user1/groups/user1Group2" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="{&quot;recordid&quot; : &quot;user1Group2&quot;, &quot;members&quot; : []}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8080" />
+          <option name="urlPath" value="/api/v1/addressbooks/user1/groups" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&quot;recordid&quot; : &quot;user1Group2&quot;, &quot;members&quot; : []}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8080" />
+          <option name="urlPath" value="/api/v1/addressbooks/user1/groups" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&quot;recordid&quot; : &quot;user1Group1&quot;, &quot;members&quot; : []}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="DELETE" />
+          <option name="urlBase" value="http://localhost:8080" />
+          <option name="urlPath" value="/api/v1/addressbooks/user1/groups" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="{&quot;recordid&quot; : &quot;user1Group1&quot;, &quot;members&quot; : []}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8080" />
+          <option name="urlPath" value="/api/v1/addressbooks/user1" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="{&quot;recordid&quot; : &quot;user1Group3&quot;, &quot;members&quot; : []}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="DELETE" />
+          <option name="urlBase" value="http://localhost:8080" />
+          <option name="urlPath" value="/api/v1/addressbooks/user1/groups/user1Group3" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="{&quot;recordid&quot; : &quot;user1Group3&quot;, &quot;members&quot; : []}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8080" />
+          <option name="urlPath" value="/api/v1/addressbooks/user1/groups" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&quot;recordid&quot; : &quot;user1Group3&quot;, &quot;members&quot; : []}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8080" />
+          <option name="urlPath" value="/api/v1/addressbooks/user1/groups" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&quot;recordid&quot; : &quot;user1Group2&quot;, &quot;members&quot; : []}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8080" />
+          <option name="urlPath" value="/api/v1/addressbooks/user1/contacts" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{   &quot;recordid&quot; : &quot;user1Contact1&quot;,   &quot;contacttype&quot; : &quot;friend&quot;,   &quot;firstname&quot; : &quot;Contact&quot;,   &quot;lastname&quot; : &quot;One&quot;,   &quot;groupmembership&quot; : [&quot;user1Group1&quot;],   &quot;bday&quot; : &quot;08-29-1975&quot;,   &quot;facebook&quot; : &quot;conactone&quot;,   &quot;twitter&quot; : &quot;@contactone&quot;,   &quot;association&quot; : &quot;Friend from college&quot;,   &quot;notes&quot; : &quot;Empty Notes&quot;,   &quot;addresses&quot; : [     {       &quot;label&quot; : &quot;Home&quot;,       &quot;street1&quot; : &quot;1234 Happy Drive&quot;,       &quot;street2&quot; : &quot;&quot;,       &quot;city&quot; : &quot;Denver&quot;,       &quot;state&quot; : &quot;CO&quot;,       &quot;postalcode&quot; : &quot;80111&quot;,       &quot;country&quot; : &quot;United States&quot;     },     {       &quot;label&quot; : &quot;Work&quot;,       &quot;street1&quot; : &quot;1234 Business Drive&quot;,       &quot;street2&quot; : &quot;&quot;,       &quot;city&quot; : &quot;Denver&quot;,       &quot;state&quot; : &quot;CO&quot;,       &quot;postalcode&quot; : &quot;80111&quot;,       &quot;country&quot; : &quot;United States&quot;     }   ],   &quot;phones&quot; : [     {       &quot;label&quot; : &quot;Home&quot;,       &quot;number&quot; : &quot;303-333-3333&quot;     },     {       &quot;label&quot; : &quot;Work&quot;,       &quot;number&quot; : &quot;303-444-4444&quot;     }   ],   &quot;emails&quot; : [     {       &quot;label&quot; : &quot;Personal&quot;,       &quot;email&quot; : &quot;contact1@host.com&quot;     },     {       &quot;label&quot; : &quot;Work&quot;,       &quot;email&quot; : &quot;contact2work@host.com&quot;     }   ] }" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8080" />
+          <option name="urlPath" value="/api/v1/addressbooks/user1/contacts" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{   &quot;recordid&quot; : &quot;user1Contact1&quot;,   &quot;contacttype&quot; : &quot;friend&quot;,   &quot;firstname&quot; : &quot;Contact&quot;,   &quot;lastname&quot; : &quot;One&quot;,   &quot;groupmembership&quot; : [&quot;user1Group1&quot;],   &quot;bday&quot; : &quot;08-29-1975&quot;,   &quot;facebook&quot; : &quot;conactone&quot;,   &quot;twitter&quot; : &quot;@contactone&quot;,   &quot;association&quot; : &quot;Friend from college&quot;,   &quot;notes&quot; : &quot;Empty Notes&quot;,   &quot;addresses&quot; : [     {       &quot;label&quot; : &quot;Home&quot;,       &quot;street1&quot; : &quot;1234 Happy Drive&quot;,       &quot;street2&quot; : &quot;&quot;,       &quot;city&quot; : &quot;Denver&quot;,       &quot;state&quot; : &quot;CO&quot;,       &quot;postalcode&quot; : &quot;80111&quot;,       &quot;country&quot; : &quot;United States&quot;     },     {       &quot;label&quot; : &quot;Work&quot;,       &quot;street1&quot; : &quot;1234 Business Drive&quot;,       &quot;street2&quot; : &quot;&quot;,       &quot;city&quot; : &quot;Denver&quot;,       &quot;state&quot; : &quot;CO&quot;,       &quot;postalcode&quot; : &quot;80111&quot;,       &quot;country&quot; : &quot;United States&quot;     }   ],   &quot;phones&quot; : [     {       &quot;label&quot; : &quot;Home&quot;,       &quot;number&quot; : &quot;303-333-3333&quot;     },     {       &quot;label&quot; : &quot;Work&quot;,       &quot;number&quot; : &quot;303-444-4444&quot;     }   ],   &quot;emails&quot; : [     {       &quot;label&quot; : &quot;Personal&quot;,       &quot;email&quot; : &quot;contact1@host.com&quot;     },     {       &quot;label&quot; : &quot;Work&quot;,       &quot;email&quot; : &quot;contact1work@host.com&quot;     }   ] }" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8080" />
+          <option name="urlPath" value="/api/v1/addressbooks/user1/groups" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&quot;recordid&quot; : &quot;user1Group1&quot;, &quot;members&quot; : []}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8080" />
+          <option name="urlPath" value="/api/v1/addressbooks/user1" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="{&quot;recordid&quot; : &quot;user1Group2&quot;, &quot;members&quot; : []}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8080" />
+          <option name="urlPath" value="/api/v1/addressbooks/user1" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="{&quot;recordid&quot; : &quot;user1Group1&quot;, &quot;members&quot; : []}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8080" />
+          <option name="urlPath" value="/api/v1/addressbooks/user1" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="{   &quot;recordid&quot; : &quot;user1Contact1&quot;,   &quot;contacttype&quot; : &quot;friend&quot;,   &quot;firstname&quot; : &quot;Contact&quot;,   &quot;lastname&quot; : &quot;One&quot;,   &quot;groupmembership&quot; : [&quot;user1Group1&quot;],   &quot;bday&quot; : &quot;08-29-1975&quot;,   &quot;facebook&quot; : &quot;conactone&quot;,   &quot;twitter&quot; : &quot;@contactone&quot;,   &quot;association&quot; : &quot;Friend from college&quot;,   &quot;notes&quot; : &quot;Empty Notes&quot;,   &quot;addresses&quot; : [     {       &quot;label&quot; : &quot;Home&quot;,       &quot;street1&quot; : &quot;1234 Happy Drive&quot;,       &quot;street2&quot; : &quot;&quot;,       &quot;city&quot; : &quot;Denver&quot;,       &quot;state&quot; : &quot;CO&quot;,       &quot;postalcode&quot; : &quot;80111&quot;,       &quot;country&quot; : &quot;United States&quot;     },     {       &quot;label&quot; : &quot;Work&quot;,       &quot;street1&quot; : &quot;1234 Business Drive&quot;,       &quot;street2&quot; : &quot;&quot;,       &quot;city&quot; : &quot;Denver&quot;,       &quot;state&quot; : &quot;CO&quot;,       &quot;postalcode&quot; : &quot;80111&quot;,       &quot;country&quot; : &quot;United States&quot;     }   ],   &quot;phones&quot; : [     {       &quot;label&quot; : &quot;Home&quot;,       &quot;number&quot; : &quot;303-333-3333&quot;     },     {       &quot;label&quot; : &quot;Work&quot;,       &quot;number&quot; : &quot;303-444-4444&quot;     }   ],   &quot;emails&quot; : [     {       &quot;label&quot; : &quot;Personal&quot;,       &quot;email&quot; : &quot;contact1@host.com&quot;     },     {       &quot;label&quot; : &quot;Work&quot;,       &quot;email&quot; : &quot;contact1work@host.com&quot;     }   ] }" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:8080" />
+          <option name="urlPath" value="/api/v1/addressbooks/user1" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Accept" />
+                <option name="value" value="*/*" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Cache-Control" />
+                <option name="value" value="no-cache" />
+              </KeyValuePair>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="parametersEnabled" value="true" />
+          <option name="textToSend" value="" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
         <RestClientRequest>
           <option name="httpMethod" value="DELETE" />
           <option name="urlBase" value="http://localhost:8080" />
@@ -1156,394 +1546,6 @@
           <option name="textToSend" value="{&quot;name&quot; : &quot;user4Group1&quot;, &quot;members&quot; : []}" />
           <option name="filesToSend" value="" />
         </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="POST" />
-          <option name="urlBase" value="http://localhost:8080" />
-          <option name="urlPath" value="/api/v1/addressbooks/user5" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Content-Type" />
-                <option name="value" value="application/json" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="textToSend" value="{&quot;name&quot; : &quot;user4Group1&quot;, &quot;members&quot; : []}" />
-          <option name="filesToSend" value="" />
-        </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="DELETE" />
-          <option name="urlBase" value="http://localhost:8080" />
-          <option name="urlPath" value="/api/v1/addressbooks/user5" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Content-Type" />
-                <option name="value" value="application/json" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="textToSend" value="{&quot;name&quot; : &quot;user4Group1&quot;, &quot;members&quot; : []}" />
-          <option name="filesToSend" value="" />
-        </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="POST" />
-          <option name="urlBase" value="http://localhost:8080" />
-          <option name="urlPath" value="/api/v1/addressbooks/user5/groups" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Content-Type" />
-                <option name="value" value="application/json" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="haveTextToSend" value="true" />
-          <option name="textToSend" value="{&quot;name&quot; : &quot;user4Group1&quot;, &quot;members&quot; : []}" />
-          <option name="filesToSend" value="" />
-        </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="GET" />
-          <option name="urlBase" value="http://localhost:8080" />
-          <option name="urlPath" value="/api/v1/addressbooks/user5" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Content-Type" />
-                <option name="value" value="application/json" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="textToSend" value="" />
-          <option name="filesToSend" value="" />
-        </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="DELETE" />
-          <option name="urlBase" value="http://localhost:8080" />
-          <option name="urlPath" value="/api/v1/addressbooks/user5" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Content-Type" />
-                <option name="value" value="application/json" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="textToSend" value="" />
-          <option name="filesToSend" value="" />
-        </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="POST" />
-          <option name="urlBase" value="http://localhost:8080" />
-          <option name="urlPath" value="/api/v1/addressbooks/user5" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Content-Type" />
-                <option name="value" value="application/json" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="textToSend" value="" />
-          <option name="filesToSend" value="" />
-        </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="GET" />
-          <option name="urlBase" value="http://localhost:8080" />
-          <option name="urlPath" value="/api/v1/addressbooks/user5" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Content-Type" />
-                <option name="value" value="application/json" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="textToSend" value="" />
-          <option name="filesToSend" value="" />
-        </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="DELETE" />
-          <option name="urlBase" value="http://localhost:8080" />
-          <option name="urlPath" value="/api/v1/addressbooks/user5" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Content-Type" />
-                <option name="value" value="application/json" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="textToSend" value="" />
-          <option name="filesToSend" value="" />
-        </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="POST" />
-          <option name="urlBase" value="http://localhost:8080" />
-          <option name="urlPath" value="/api/v1/addressbooks/user5" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Content-Type" />
-                <option name="value" value="application/json" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="textToSend" value="" />
-          <option name="filesToSend" value="" />
-        </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="POST" />
-          <option name="urlBase" value="http://localhost:8080" />
-          <option name="urlPath" value="/api/v1/addressbooks/user5" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Content-Type" />
-                <option name="value" value="application/json" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="textToSend" value="" />
-          <option name="filesToSend" value="" />
-        </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="POST" />
-          <option name="urlBase" value="http://localhost:8080" />
-          <option name="urlPath" value="/api/v1/addressbooks/user5" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Content-Type" />
-                <option name="value" value="application/json" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="textToSend" value="{&quot;name&quot; : &quot;user5Group1&quot;, &quot;members&quot; : []}" />
-          <option name="filesToSend" value="$PROJECT_DIR$/GroupsData.json" />
-        </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="POST" />
-          <option name="urlBase" value="http://localhost:8080" />
-          <option name="urlPath" value="/api/v1/addressbooks/user5/groups" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Content-Type" />
-                <option name="value" value="application/json" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="haveTextToSend" value="true" />
-          <option name="textToSend" value="{&quot;name&quot; : &quot;user5Group1&quot;, &quot;members&quot; : []}" />
-          <option name="filesToSend" value="$PROJECT_DIR$/GroupsData.json" />
-        </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="POST" />
-          <option name="urlBase" value="http://localhost:8080" />
-          <option name="urlPath" value="/api/v1/addressbooks/user5" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Content-Type" />
-                <option name="value" value="application/json" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="textToSend" value="{&quot;name&quot; : &quot;user4Group1&quot;, &quot;members&quot; : []}" />
-          <option name="filesToSend" value="$PROJECT_DIR$/GroupsData.json" />
-        </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="GET" />
-          <option name="urlBase" value="http://localhost:8080" />
-          <option name="urlPath" value="/api/v1/addressbooks/user4" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Content-Type" />
-                <option name="value" value="application/json" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="textToSend" value="{&quot;name&quot; : &quot;user4Group1&quot;, &quot;members&quot; : []}" />
-          <option name="filesToSend" value="$PROJECT_DIR$/GroupsData.json" />
-        </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="POST" />
-          <option name="urlBase" value="http://localhost:8080" />
-          <option name="urlPath" value="/api/v1/addressbooks/user4/groups" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Content-Type" />
-                <option name="value" value="application/json" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="haveTextToSend" value="true" />
-          <option name="textToSend" value="{&quot;name&quot; : &quot;user4Group1&quot;, &quot;members&quot; : []}" />
-          <option name="filesToSend" value="$PROJECT_DIR$/GroupsData.json" />
-        </RestClientRequest>
-        <RestClientRequest>
-          <option name="httpMethod" value="POST" />
-          <option name="urlBase" value="http://localhost:8080" />
-          <option name="urlPath" value="/api/v1/addressbooks/user4/groups" />
-          <option name="headers">
-            <list>
-              <KeyValuePair>
-                <option name="key" value="Accept" />
-                <option name="value" value="*/*" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Cache-Control" />
-                <option name="value" value="no-cache" />
-              </KeyValuePair>
-              <KeyValuePair>
-                <option name="key" value="Content-Type" />
-                <option name="value" value="application/json, charset=utf-8" />
-              </KeyValuePair>
-            </list>
-          </option>
-          <option name="parametersEnabled" value="true" />
-          <option name="haveFileToSend" value="true" />
-          <option name="textToSend" value="" />
-          <option name="filesToSend" value="$PROJECT_DIR$/GroupsData.json" />
-        </RestClientRequest>
       </list>
     </option>
   </component>
@@ -1601,27 +1603,27 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1" y="1" width="1845" height="1119" extended-state="0" />
+    <frame x="1" y="0" width="1901" height="1135" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12684527" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12095491" sideWeight="0.48870057" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27497527" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="REST Client" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31061342" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32938856" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12095491" sideWeight="0.51129943" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1660,13 +1662,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ApiMethods.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bin/MongoConnection.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2033,24 +2028,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/definitions/router_definitions.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="50" column="33" selection-start-line="50" selection-start-column="33" selection-end-line="50" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/BuildJsonString.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="96" column="53" selection-start-line="96" selection-start-column="53" selection-end-line="96" selection-end-column="53" />
-          <folding>
-            <element signature="e#0#44#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/swagger (1).yaml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2059,37 +2036,63 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bin/MongoConnection.js">
+    <entry file="file://$PROJECT_DIR$/definitions/router_definitions.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="205" column="108" selection-start-line="205" selection-start-column="108" selection-end-line="205" selection-end-column="108" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sampledata/GroupsData.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/definitions/jsonstring_definitions.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-22.23077">
-          <caret line="76" column="21" selection-start-line="76" selection-start-column="21" selection-end-line="76" selection-end-column="21" />
+        <state vertical-scroll-proportion="-64.07692">
+          <caret line="98" column="20" selection-start-line="98" selection-start-column="20" selection-end-line="98" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/AddressBookOperations.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.675">
-          <caret line="98" column="45" selection-start-line="98" selection-start-column="45" selection-end-line="98" selection-end-column="45" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="140" column="0" selection-start-line="140" selection-start-column="0" selection-end-line="140" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sampledata/GroupsData.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.65384614">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/MongoConnection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="68.08">
+          <caret line="135" column="0" selection-start-line="135" selection-start-column="0" selection-end-line="135" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sampledata/ContactsData.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.653847">
+          <caret line="50" column="6" selection-start-line="50" selection-start-column="6" selection-end-line="50" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/definitions/jsonstring_definitions.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="27.153847">
+          <caret line="140" column="27" selection-start-line="140" selection-start-column="27" selection-end-line="140" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/BuildJsonString.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.475">
+          <caret line="106" column="89" selection-start-line="106" selection-start-column="89" selection-end-line="106" selection-end-column="89" />
+          <folding>
+            <element signature="e#0#44#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
