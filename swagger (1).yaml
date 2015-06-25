@@ -1470,12 +1470,6 @@ definitions:
         type: string
       lastname:
         type: string
-      addresses:
-        $ref: "#/definitions/Address"
-      phones:
-        $ref: "#/definitions/Phone"
-      emails:
-        $ref: "#/definitions/Email"
       bday:
         type: string
         format: date-time
@@ -1494,6 +1488,10 @@ definitions:
   Address:
     properties:
       id:
+        type: string
+      recordid:
+        type: string
+      contactrecordid: 
         type: string
       url:
         type: string
@@ -1515,6 +1513,10 @@ definitions:
     properties:
       id:
         type: string
+      recordid: 
+        type: string
+      contactrecordid: 
+        type: string
       url:
         type: string
       label:
@@ -1524,6 +1526,10 @@ definitions:
   Email:
     properties:
       id:
+        type: string
+      recordid:
+        type: string
+      contactrecordid:
         type: string
       url:
         type: string

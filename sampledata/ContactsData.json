@@ -8,51 +8,5 @@
   "facebook" : "conactone",
   "twitter" : "@contactone",
   "association" : "Friend from college",
-  "notes" : "Empty Notes",
-  "addresses" : [
-    {
-      "recordid" : "",
-      "label" : "Home",
-      "street1" : "1234 Happy Drive",
-      "street2" : "",
-      "city" : "Denver",
-      "state" : "CO",
-      "postalcode" : "80111",
-      "country" : "United States"
-    },
-    {
-      "recordid" : "",
-      "label" : "Work",
-      "street1" : "1234 Business Drive",
-      "street2" : "",
-      "city" : "Denver",
-      "state" : "CO",
-      "postalcode" : "80111",
-      "country" : "United States"
-    }
-  ],
-  "phones" : [
-    {
-      "recordid" : "",
-      "label" : "Home",
-      "number" : "303-333-3333"
-    },
-    {
-      "recordid" : "",
-      "label" : "Work",
-      "number" : "303-444-4444"
-    }
-  ],
-  "emails" : [
-    {
-      "recordid" : "",
-      "label" : "Personal",
-      "email" : "contact1@host.com"
-    },
-    {
-      "recordid" : "",
-      "label" : "Work",
-      "email" : "contact1work@host.com"
-    }
-  ]
+  "notes" : "Empty Notes"
 }

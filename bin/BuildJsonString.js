@@ -147,6 +147,7 @@ exports.buildJsonString = function(resourceType, operation, req, jsonQueryString
 
                     switch(recordObject.parameters[i].type){
                         case 'string':
+
                             jsonString = jsonString + '"' + req.body[recordObject.parameters[i].name] + '"'
                             break
 

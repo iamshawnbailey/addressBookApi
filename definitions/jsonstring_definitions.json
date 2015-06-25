@@ -205,26 +205,77 @@
         {
           "name" : "notes",
           "value" : "body"
-        },
-        {
-          "name" : "addresses",
-          "resourcetype" : "address",
-          "value" : "body",
-          "type" : "jsonarray"
-        },
-        {
-          "name" : "phones",
-          "resourcetype" : "phone",
-          "value" : "body",
-          "type" : "jsonarray"
-        },
-        {
-          "name" : "emails",
-          "resourcetype" : "email",
-          "value" : "body",
-          "type" : "jsonarray"
         }
       ]
-    }
+    },
+    {
+      "method" : "post",
+      "resourcetype" : "address",
+      "resourcepath" : "addresses",
+      "parameters" : [
+        {
+          "name" : "recordtype",
+          "value" : "address"
+        },
+        {
+          "name" : "recordid",
+          "value" : "body"
+        },
+        {
+          "name" : "contactrecordid",
+          "value" : "body"
+        },
+        {
+          "name": "url",
+          "value": "url",
+          "path": [
+            {
+              "name": "contacts",
+              "value": "this"
+            },
+            {
+              "name": "contactrecordid",
+              "value": "body"
+            },
+            {
+              "name": "addresses",
+              "value": "this"
+            },
+            {
+              "name": "recordid",
+              "value": "body"
+            }
+          ]
+        },
+        {
+          "name" : "label",
+          "value" : "body"
+        },
+        {
+          "name" : "street1",
+          "value" : "body"
+        },
+        {
+          "name" : "street2",
+          "value" : "body"
+        },
+        {
+          "name" : "city",
+          "value" : "body"
+        },
+        {
+          "name" : "state",
+          "value" : "body"
+        },
+        {
+          "name" : "postalcode",
+          "value" : "body"
+        },
+        {
+          "name" : "country",
+          "value" : "body"
+        }
+        ]
+      }
   ]
 }

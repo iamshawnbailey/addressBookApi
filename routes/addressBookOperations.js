@@ -237,6 +237,9 @@ function buildLinks(routerObject, req, callback){
 					linksString = linksString + '/' + req.path.toString().split('/')[routerObject.links[i].path[y].index]
 					break
 				case 'body':
+					if(req.body[routerObject.links[i].path[y].name] == ''){
+						req.body[routerObject.links[i].path[y].name] = (Math.random() * 1000000).toString().split('.')[0]
+					}
 					linksString = linksString + '/' + req.body[routerObject.links[i].path[y].name]
 					break
 				default:
